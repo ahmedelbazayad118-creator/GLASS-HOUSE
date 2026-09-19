@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLASS HOUSE — Luxury Architectural Mirrors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ========================================================
+       GLOBAL & HERO THEME VARIABLES (DARK LUXURY)
+    ======================================================== */
+    :root {
+      --hero-bg: #070708;
+      --hero-text: #f7f7f4;
+      --hero-muted: #8e8e89;
+      --accent: #d4af37;
+      --accent-champagne: #e8d8b8;
+      --accent-glow: rgba(212, 175, 55, 0.22);
+      --hero-border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(212, 175, 55, 0.35);
+
+      /* ========================================================
+         SHOWCASE & MODAL THEME VARIABLES (GALLERY WHITE)
+      ======================================================== */
+      --light-bg: #f8f7f4;
+      --light-surface: #ffffff;
+      --light-card-bg: #ffffff;
+      --light-text-heading: #121214;
+      --light-text-body: #4a4a47;
+      --light-text-muted: #7e7e78;
+      --light-border: rgba(0, 0, 0, 0.08);
+      --light-border-hover: rgba(184, 142, 38, 0.5);
+      --light-accent-gold: #b38b29;
+      --light-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      --light-shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.08), 0 0 20px rgba(184, 142, 38, 0.12);
+
+      --font-display: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Montserrat', sans-serif;
+      --font-ar-display: 'Amiri', serif;
+      --font-ar-sans: 'Tajawal', sans-serif;
+      --transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [dir="rtl"] {
+      --font-serif: 'Amiri', serif;
+      --font-sans: 'Tajawal', sans-serif;
+      text-align: right;
+    }
+
+    [dir="rtl"] body {
+      font-family: var(--font-ar-sans);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--hero-bg);
+      color: var(--hero-text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========================================================
+       MINIMALIST CLEAN NAVBAR
+    ======================================================== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 2.8rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0);
+      pointer-events: none;
+      transition: transform 0.45s ease, opacity 0.45s ease, padding 0.4s ease;
+    }
+
+    .top-bar.nav-hidden {
+      transform: translateY(-110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .top-bar.nav-hidden > * {
+      pointer-events: none;
+    }
+
+    .top-bar > * {
+      pointer-events: auto;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      color: #ffffff;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 125px;
+      height: 76px;
+      object-fit: contain;
+    }
+
+    [dir="rtl"] .brand-mark {
+      letter-spacing: normal;
+    }
+
+    .brand-mark:hover {
+      opacity: 0.75;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      padding: 0.65rem 0.35rem;
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    [dir="rtl"] .lang-btn {
+      font-family: var(--font-ar-sans);
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-btn:hover {
+      opacity: 1;
+    }
+
+    .lang-divider {
+      display: inline-block;
+      width: 1px;
+      height: 11px;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ========================================================
+       SECTION 1: HERO (DARK, PRESERVED EXACTLY AS IT IS)
+    ======================================================== */
+    .hero {
+      position: sticky;
+      top: 0;
+      z-index: 0;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      overflow: hidden;
+      background: var(--hero-bg);
+    }
+
+    .hero-bg-container {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.42) contrast(1.1);
+      transform: scale(1.08);
+      animation: heroZoom 14s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(16,16,20,0.22) 0%, rgba(7,7,8,0.72) 85%),
+                  linear-gradient(to bottom, transparent 100%, var(--light-bg) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(3.2rem, 7.8vw, 7.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 1.8rem;
+      text-transform: uppercase;
+      animation: fadeInUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .hero-headline span {
+      font-style: italic;
+      color: var(--accent-champagne);
+      font-family: var(--font-serif);
+    }
+
+    .hero-subtext {
+      font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+      color: #b5b5ad;
+      max-width: 640px;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+      animation: fadeInUp 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 2.8rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent-champagne);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      animation: fadeInUp 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
+      transition: 0.6s;
+    }
+
+    .hero-cta:hover::before {
+      left: 100%;
+    }
+
+    .hero-cta:hover {
+      background: var(--accent);
+      color: #070708;
+      box-shadow: 0 0 35px var(--accent-glow);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0.7;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--hero-muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 45px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: pulseScroll 2.2s infinite;
+    }
+
+    @keyframes pulseScroll {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========================================================
+       SECTION 2: 17 MIRRORS (CONVERTED TO LUXURY WHITE THEME)
+    ======================================================== */
+    .showcase-section {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      background-color: var(--light-bg);
+      color: var(--light-text-heading);
+      padding: 7rem 4rem 10rem;
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 2rem 2rem 0 0;
+      box-shadow: 0 -18px 45px rgba(0, 0, 0, 0.18);
+      transition: background-color 0.5s ease;
+    }
+
+    .showcase-inner {
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .showcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 3rem;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .showcase-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--light-accent-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+      font-weight: 500;
+    }
+
+    .showcase-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--light-text-heading);
+      line-height: 1.1;
+    }
+
+    .showcase-counter {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--light-accent-gold);
+      letter-spacing: 0.25em;
+      font-weight: 600;
+    }
+
+    /* Strict 4-per-row grid layout on desktop */
+    .mirrors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.2rem;
+      width: 100%;
+    }
+
+    /* White Theme Mirror Card */
+    .mirror-card {
+      position: relative;
+      background: var(--light-card-bg);
+      border: 1px solid var(--light-border);
+      border-radius: 4px;
+      box-shadow: var(--light-shadow);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.6s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .mirror-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mirror-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--light-border-hover);
+      box-shadow: var(--light-shadow-hover);
+    }
+
+    .mirror-image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #ecebe6;
+    }
+
+    .mirror-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s;
+      filter: contrast(1.02) brightness(0.98);
+    }
+
+    .mirror-card:hover .mirror-img {
+      transform: scale(1.08);
+      filter: contrast(1.06) brightness(1.02);
+    }
+
+    /* Crisp Light Reflection Pass */
+    .mirror-glass-sheen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, 
+                  rgba(255,255,255,0) 0%, 
+                  rgba(255,255,255,0.1) 40%, 
+                  rgba(255,255,255,0.45) 50%, 
+                  rgba(255,255,255,0.1) 60%, 
+                  rgba(255,255,255,0) 100%);
+      transform: translateX(-100%) translateY(-100%);
+      transition: transform 0.9s ease;
+      pointer-events: none;
+    }
+
+    .mirror-card:hover .mirror-glass-sheen {
+      transform: translateX(100%) translateY(100%);
+    }
+
+    .mirror-idx {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: #1a1a1c;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(8px);
+      padding: 0.3rem 0.65rem;
+      border-radius: 2px;
+      z-index: 2;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    [dir="rtl"] .mirror-idx {
+      left: auto;
+      right: 1rem;
+    }
+
+    .mirror-badge-type {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-accent-gold);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(184, 142, 38, 0.3);
+      backdrop-filter: blur(8px);
+      padding: 0.3rem 0.65rem;
+      border-radius: 2px;
+      z-index: 2;
+      font-weight: 500;
+    }
+
+    [dir="rtl"] .mirror-badge-type {
+      right: auto;
+      left: 1rem;
+    }
+
+    .mirror-details {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      border-top: 1px solid var(--light-border);
+      background: var(--light-card-bg);
+    }
+
+    .mirror-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--light-text-heading);
+      margin-bottom: 0.35rem;
+      transition: color 0.3s;
+    }
+
+    .mirror-card:hover .mirror-name {
+      color: var(--light-accent-gold);
+    }
+
+    .mirror-dim {
+      font-size: 0.75rem;
+      color: var(--light-text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+
+    .mirror-footer-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.9rem;
+      border-top: 1px dashed var(--light-border);
+    }
+
+    .mirror-action-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--light-accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+
+    /* ========================================================
+       MODAL VIEW (CONVERTED TO ELEGANT LIGHT THEME)
+    ======================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 18, 20, 0.6);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 2rem;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      background: var(--light-surface);
+      border: 1px solid var(--light-border);
+      border-radius: 4px;
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow-y: auto;
+      transform: scale(0.94);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25), 0 0 30px rgba(184, 142, 38, 0.1);
+      color: var(--light-text-heading);
+    }
+
+    .modal-backdrop.active .modal-panel {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--light-border);
+      color: var(--light-text-heading);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: var(--transition);
+      backdrop-filter: blur(6px);
+    }
+
+    [dir="rtl"] .modal-close-btn {
+      right: auto;
+      left: 1.5rem;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--light-accent-gold);
+      color: #fff;
+    }
+
+    .modal-image-side {
+      position: relative;
+      height: 100%;
+      min-height: 480px;
+      background: #eee;
+    }
+
+    .modal-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-info-side {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #ffffff;
+    }
+
+    .modal-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--light-accent-gold);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      color: var(--light-text-heading);
+      font-weight: 600;
+    }
+
+    .modal-desc {
+      color: var(--light-text-body);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .specs-table tr {
+      border-bottom: 1px solid var(--light-border);
+    }
+
+    .specs-table td {
+      padding: 0.75rem 0;
+      font-size: 0.85rem;
+    }
+
+    .spec-label {
+      color: var(--light-text-muted);
+      width: 45%;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .spec-value {
+      color: var(--light-text-heading);
+      font-weight: 500;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1440px) {
+      .mirrors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.6rem;
+      }
+      .showcase-section {
+        padding: 6rem 2.5rem 8rem;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .mirrors-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .top-bar {
+        padding: 2.2rem 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        padding: 1.8rem 2rem;
+      }
+      .brand-mark {
+        font-size: 1rem;
+      }
+      .brand-logo {
+        width: 100px;
+        height: 61px;
+      }
+      .lang-btn,
+      [dir="rtl"] .lang-btn {
+        font-size: 0.95rem;
+      }
+      .mirrors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      .modal-panel {
+        grid-template-columns: 1fr;
+        max-height: 85vh;
+      }
+      .modal-image-side {
+        min-height: 320px;
+      }
+      .modal-info-side {
+        padding: 2rem 1.5rem;
+      }
+      .showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mirrors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimalist Architectural Navbar -->
+  <header class="top-bar">
+    <a href="#" class="brand-mark" aria-label="Glass House home">
+      <img class="brand-logo" src="./icon/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="Glass House logo">
+    </a>
+    <button class="lang-btn" id="langToggle" aria-label="Translate website language">
+      <span id="langLabel">العربية</span>
+      <span class="lang-divider"></span>
+      <span>EN</span>
+    </button>
+  </header>
+
+  <!-- ========================================================
+       SECTION 1: HERO (DARK, PRESERVED EXACTLY AS PROVIDED)
+  ======================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-container">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" alt="Glass House Luxury Interior Mirror" class="hero-bg">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline" data-i18n="heroHeadline">
+        GLASS HOUSE <br>
+        <span>REFLECT YOUR STYLE.</span>
+      </h1>
+
+      <p class="hero-subtext" data-i18n="heroSubtext">
+        Pure architectural glass, precision-honed profiles, and timeless reflections designed to sculpt natural light and transform spaces.
+      </p>
+
+      <a href="#collection" class="hero-cta" data-i18n="exploreCta">
+        EXPLORE THE 17 DESIGNS
+      </a>
+    </div>
+
+
+  </section>
+
+  <!-- ========================================================
+       SECTION 2: 17 MIRROR ARCHIVE (WHITE THEME GALLERY)
+  ======================================================== -->
+  <main class="showcase-section" id="collection">
+    <div class="showcase-inner">
+      <div class="showcase-header">
+        <div>
+          <span class="showcase-eyebrow" data-i18n="archiveEyebrow">PERMANENT ARCHIVE</span>
+          <h2 class="showcase-title" data-i18n="archiveTitle">The Mirror Collection</h2>
+        </div>
+        <div class="showcase-counter">
+          <span data-i18n="editionCount">17 EDITIONS</span>
+        </div>
+      </div>
+
+      <div class="mirrors-grid" id="mirrorsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Inspection Modal (White Theme) -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal-panel">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close details">✕</button>
+      <div class="modal-image-side">
+        <img id="modalImg" src="" alt="Selected Mirror">
+      </div>
+      <div class="modal-info-side">
+        <span class="modal-subtitle" id="modalCategory">ARCHITECTURAL</span>
+        <h3 class="modal-title" id="modalTitle">Aurelia</h3>
+        <p class="modal-desc" id="modalDescription">High-precision crafted mirror with opti-white low iron purity.</p>
+        
+        <table class="specs-table">
+          <tr>
+            <td class="spec-label" data-i18n="specDimensions">Dimensions</td>
+            <td class="spec-value" id="modalDim">120 cm ⌀</td>
+          </tr>
+          <tr>
+            <td class="spec-label" data-i18n="specMaterial">Frame Alloy</td>
+            <td class="spec-value" id="modalFrame">Brushed Champagne Brass</td>
+          </tr>
+          <tr>
+            <td class="spec-label" data-i18n="specGlass">Glass Clarity</td>
+            <td class="spec-value" id="modalGlass">Low-Iron Ultra-Clear (4mm)</td>
+          </tr>
+          <tr>
+            <td class="spec-label" data-i18n="specIllumination">Illumination</td>
+            <td class="spec-value" id="modalLighting">2700K Warm Ambient Backlight</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ========================================================
+       17 CURATED LUXURY MIRROR DATASET
+    ======================================================== */
+    const mirrors = [
+      {
+        id: 1,
+        name: { en: "Aurelia Round", ar: "أوريليا الدائرية" },
+        category: { en: "Circular", ar: "دائري" },
+        dimensions: "120 cm ⌀",
+        frame: { en: "Brushed Champagne Brass", ar: "نحاس شامبانيا مصقول" },
+        glass: { en: "Low-Iron Ultra-Clear 6mm", ar: "زجاج منخفض الحديد فائق النقاء 6 ملم" },
+        lighting: { en: "2700K Ambient LED Edge", ar: "إضاءة ليد محيطية 2700 كلفن" },
+        desc: { 
+          en: "A flawless circular statement piece crowned with hand-finished champagne brass accents.",
+          ar: "تحفة فنية دائرية متقنة ومحاطة بلمسات نهائية من النحاس بلون الشامبانيا المصقول يدوياً."
+        },
+        img: "./photos/WhatsApp Image 2026-09-20 at 12.07.57 AM.jpeg"
+      },
+      {
+        id: 2,
+        name: { en: "Eclipse Grand", ar: "إكليبس جراند" },
+        category: { en: "Floor", ar: "مرآة أرضية" },
+        dimensions: "210 × 100 cm",
+        frame: { en: "Deep Anodized Obsidian", ar: "ألومنيوم بلون حجر السج المؤكسد" },
+        glass: { en: "Ultra-Clear Float Glass", ar: "زجاج عائم فائق الوضوح" },
+        lighting: { en: "Subtle Halo Backlight", ar: "إضاءة هالة خلفية ناعمة" },
+        desc: { 
+          en: "Full-height architectural presence with a knife-edge profile for modern dressing suites.",
+          ar: "حضور معماري بارتفاع كامل بتصميم حواف فائقة الدقة لأجنحة غرف الملابس العصرية."
+        },
+        img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 3,
+        name: { en: "Halo Luminary", ar: "هالو لوميناري" },
+        category: { en: "Illuminated", ar: "مضيئة" },
+        dimensions: "95 × 95 cm",
+        frame: { en: "Seamless Brushed Nickel", ar: "نيكل مصقول بدون فواصل" },
+        glass: { en: "Opti-White Reflection Core", ar: "قلب انعكاس أوبتي-وايت نقي" },
+        lighting: { en: "Continuous CRI 98 Backlight", ar: "إضاءة خلفية دقيقة نقاء CRI 98" },
+        desc: { 
+          en: "Integrates uniform shadowless perimeter glow that elevates master bathrooms into private spas.",
+          ar: "تدمج إضاءة محيطية متجانسة بلا ظلال تنقل الحمامات الرئيسية إلى مستوى المنتجعات الخاصة."
+        },
+        img: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 4,
+        name: { en: "Archway Horizon", ar: "أركواي هورايزون" },
+        category: { en: "Arch", ar: "قوس معماري" },
+        dimensions: "200 × 90 cm",
+        frame: { en: "Forged Matte Iron", ar: "حديد مطروق بلون غير لامع" },
+        glass: { en: "High-Index Silver Backing", ar: "بطانة فضية عالية الانعكاس" },
+        lighting: { en: "Passive Light Capture", ar: "التقاط ضوء طبيعي" },
+        desc: { 
+          en: "Soft neoclassical arched curvature crafted to frame vertical sightlines and elevate ceilings.",
+          ar: "انحناءة قوس كلاسيكية ناعمة صُممت لتعزيز الخطوط الرأسية وإبراز ارتفاع الأسقف."
+        },
+        img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 5,
+        name: { en: "Linea Minimalist", ar: "لينيا مينيماليست" },
+        category: { en: "Rectangular", ar: "مستطيلة" },
+        dimensions: "180 × 80 cm",
+        frame: { en: "Micro-Border Brushed Bronze", ar: "إطار دقيق من البرونز المصقول" },
+        glass: { en: "Opti-Clear Mirror Surface", ar: "سطح مرآة فائق النقاء" },
+        lighting: { en: "Optional Recessed Glow", ar: "إضاءة غائرة اختيارية" },
+        desc: { 
+          en: "Understated geometric discipline delivering absolute clarity and serene spatial proportion.",
+          ar: "دقة هندسية هادئة تمنح وضوحاً مطلقاً وتناغماً بصرياً للمساحات الراقية."
+        },
+        img: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 6,
+        name: { en: "Luna Organic", ar: "لونا العضوية" },
+        category: { en: "Sculptural", ar: "منحوتة" },
+        dimensions: "135 × 110 cm",
+        frame: { en: "Frameless Polished Bevel", ar: "بدون إطار بحواف مصقولة مشطوفة" },
+        glass: { en: "Ultra-Pure Float Glass", ar: "زجاج عائم عالي النقاء" },
+        lighting: { en: "Diffused Wall Wash", ar: "إضاءة جدارية متناغمة" },
+        desc: { 
+          en: "Asymmetric free-flowing contour inspired by river pebbles and liquid reflections.",
+          ar: "انسيابية غير متناظرة مستوحاة من أحجار الأنهار الطبيعية وانعكاسات المياه."
+        },
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 7,
+        name: { en: "Palazzo Heritage", ar: "بالاتزو هيريتدج" },
+        category: { en: "Decorative", ar: "تراثي" },
+        dimensions: "160 × 95 cm",
+        frame: { en: "Antiqued Gold Leaf Foil", ar: "ورق ذهب معتق يدوياً" },
+        glass: { en: "Distressed Mirror Glass", ar: "زجاج مرآة كلاسيكي معتق" },
+        lighting: { en: "Warm Candlelight Reflection", ar: "عاكس ضوء دافئ" },
+        desc: { 
+          en: "Venetian-inspired detailing that marries royal traditional craftsmanship with modern balance.",
+          ar: "تفاصيل مستوحاة من فن البندقية تجمع بين الفخامة الملكية والتوازن المعاصر."
+        },
+        img: "https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 8,
+        name: { en: "Solstice Capsule", ar: "سولستيس كبسولة" },
+        category: { en: "Capsule", ar: "كبسولة" },
+        dimensions: "170 × 65 cm",
+        frame: { en: "Brushed Gunmetal Steel", ar: "فولاذ مصقول بلون الرصاص الداكن" },
+        glass: { en: "Opti-Clear Premium", ar: "زجاج أوبتي-كلير الممتاز" },
+        lighting: { en: "Side-Channel Luminescence", ar: "إضاءة جانبية خافتة" },
+        desc: { 
+          en: "Elongated pill silhouette that imparts soft vertical movement and light into entryways.",
+          ar: "تصميم انسيابي مستطيل الحواف يضفي حركة عمودية أنيقة ونوراً هادئاً للمداخل."
+        },
+        img: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 9,
+        name: { en: "Triptych Studio", ar: "تريبتيك ستوديو" },
+        category: { en: "Vanity", ar: "ثلاثية الطي" },
+        dimensions: "110 × 140 cm (Extended)",
+        frame: { en: "Milled Aerospace Aluminum", ar: "ألومنيوم فضاء مصقول بدقة" },
+        glass: { en: "HD Distortion-Free", ar: "زجاج عالي الدقة بدون تشويه" },
+        lighting: { en: "Precision Vanity Glow", ar: "إضاءة تجميل دقيقة" },
+        desc: { 
+          en: "Three-panel articulated vanity mirror engineered with silky, silent brass pivot hinges.",
+          ar: "مرآة زينة ثلاثية الألواح مزودة بمفاصل نحاسية ناعمة الحركة لتعدد زوايا الرؤية."
+        },
+        img: "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 10,
+        name: { en: "Onyx Monolith", ar: "أونيكس مونوليث" },
+        category: { en: "Floor", ar: "مرآة ضخمة" },
+        dimensions: "240 × 120 cm",
+        frame: { en: "Smoked Blackened Titanium", ar: "تيتانيوم مدخن ومسود" },
+        glass: { en: "Dark Smoke Tinted Core", ar: "قلب زجاجي مدخن داكن" },
+        lighting: { en: "Integrated Bottom Wash", ar: "إضاءة أرضية مدمجة" },
+        desc: { 
+          en: "An imposing, gallery-scale statement piece creating unmatched depth in grand living halls.",
+          ar: "قطعة فنية هائلة بمقاييس المعارض تمنح عمقاً لا متناهياً لغرف المعيشة الفارهة."
+        },
+        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 11,
+        name: { en: "Vapour Floating", ar: "فابور المعلقة" },
+        category: { en: "Frameless", ar: "معلقة بلا إطار" },
+        dimensions: "100 × 100 cm",
+        frame: { en: "Concealed Standoff Mount", ar: "تثبيت خفي بدون إطار ظاهر" },
+        glass: { en: "Diamond Polished Edge", ar: "حواف مصقولة بقطع الماس" },
+        lighting: { en: "360° Perimeter Aura", ar: "هالة محيطية 360 درجة" },
+        desc: { 
+          en: "Suspends 40mm off the wall surface, casting a levitating halo of pure architectural light.",
+          ar: "تطفو على بعد 40 ملم من الجدار، مما يعطي إيحاءً بالتحليق مع هالة ضوئية نقية."
+        },
+        img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 12,
+        name: { en: "Brutalist Brass", ar: "بروتاليست براس" },
+        category: { en: "Sculptural", ar: "نحاسية هندسية" },
+        dimensions: "150 × 85 cm",
+        frame: { en: "Cast Heavyweight Brass", ar: "نحاس ثقيل مصبوب" },
+        glass: { en: "Low-Iron Premium", ar: "زجاج منخفض الحديد ممتاز" },
+        lighting: { en: "Passive Shadow Play", ar: "تفاعل مع الظلال المحيطة" },
+        desc: { 
+          en: "Deep-recessed chamfered reveal that transforms the mirror into a sculpted architectural portal.",
+          ar: "إطار غائر ببروز هندسي يحول المرآة إلى بوابة معمارية منحوتة في الجدار."
+        },
+        img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 13,
+        name: { en: "Crescent Duet", ar: "كريسنت ديو" },
+        category: { en: "Segmented", ar: "مزدوجة مقسمة" },
+        dimensions: "140 × 90 cm",
+        frame: { en: "Twin Split Bronze", ar: "برونز مزدوج منفصل" },
+        glass: { en: "Dual Contrast Reflector", ar: "عاكس زجاجي مزدوج التباين" },
+        lighting: { en: "Central Seam Luminescence", ar: "إضاءة من الخط الفاصل" },
+        desc: { 
+          en: "Two interconnected semicircular mirrors positioned with a dramatic vertical dividing gap.",
+          ar: "مرآتان نصف دائريتان متصلتان يفصل بينهما خط عمودي جذاب يشع بالضوء."
+        },
+        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 14,
+        name: { en: "Starlight Infinity", ar: "ستارلايت إنفينيتي" },
+        category: { en: "Backlit", ar: "إضاءة خافتة" },
+        dimensions: "115 × 75 cm",
+        frame: { en: "Satin Warm Nickel", ar: "نيكل دافئ ملمس ساتان" },
+        glass: { en: "Optical Crystal Grade", ar: "بلور بصري كريستالي نقي" },
+        lighting: { en: "Warm 2400K Glow", ar: "وهج دافئ 2400 كلفن" },
+        desc: { 
+          en: "Radiates warm golden light outward to generate warmth and gentle dimension across wall textures.",
+          ar: "تشع بضوء ذهبي دافئ ينساب على الجدران ليمنح المكان دفئاً وعمقاً ساحراً."
+        },
+        img: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 15,
+        name: { en: "Nordic Atelier", ar: "نورديك أتيليه" },
+        category: { en: "Rectangular", ar: "مستطيلة نورديك" },
+        dimensions: "190 × 75 cm",
+        frame: { en: "White Oiled Solid Ash & Steel", ar: "خشب دردار صلب مطعم بالفولاذ" },
+        glass: { en: "Ultra-Silver Reflective", ar: "طلاء فضي فائق النقاء" },
+        lighting: { en: "Ambient Top Sconce Compatible", ar: "متوافقة مع الإضاءة العلوية" },
+        desc: { 
+          en: "Scandinavian restraint married with crisp European craftsmanship for minimalist sanctuaries.",
+          ar: "بساطة اسكندنافية أصيلة ممتزجة مع براعة التصنيع الأوروبي للمنازل الحديثة."
+        },
+        img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 16,
+        name: { en: "Prism Polygon", ar: "بريزم متعدد الأضلاع" },
+        category: { en: "Geometric", ar: "هندسي متعدد الأوجه" },
+        dimensions: "110 × 110 cm",
+        frame: { en: "Faceted Champagne Steel", ar: "فولاذ شامبانيا متعدد الزوايا" },
+        glass: { en: "Multi-Facet Beveled Float", ar: "زجاج عائم بحواف مشطوفة الزوايا" },
+        lighting: { en: "Prismatic Light Refraction", ar: "انكسار ضوئي بلوري" },
+        desc: { 
+          en: "Octagonal faceted perimeter that breaks incoming natural light into radiant, soft patterns.",
+          ar: "إطار مثمن الأضلاع يكسر الضوء الطبيعي المتدفق إلى تشكيلات ضوئية بهية."
+        },
+        img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=900&auto=format&fit=crop"
+      },
+      {
+        id: 17,
+        name: { en: "Zenith Oversized", ar: "زينيث الفاخرة" },
+        category: { en: "Masterpiece", ar: "تحفة معمارية" },
+        dimensions: "260 × 140 cm",
+        frame: { en: "Seamless Architectural Bronze", ar: "برونز معماري سلس بدون لحام" },
+        glass: { en: "Museum Grade Diamond Pure", ar: "زجاج نقي بمواصفات المتاحف العالمية" },
+        lighting: { en: "Dual Indirect Ambient Flow", ar: "تدفق ضوئي محيطي غير مباشر" },
+        desc: { 
+          en: "The definitive flagship monument: an awe-inspiring expanse designed for double-height spaces.",
+          ar: "القطعة الرائدة الاستثنائية: اتساع بصري شاهق صُمم خصيصاً للصالات والمنازل ذات الأسقف العالية."
+        },
+        img: "https://images.unsplash.com/photo-160058515526-990dced4db0d?q=80&w=900&auto=format&fit=crop"
+      }
+    ];
+
+    /* ========================================================
+       I18N TRANSLATION MATRIX
+    ======================================================== */
+    const translations = {
+      en: {
+        brand: "GLASS HOUSE",
+        heroHeadline: "GLASS HOUSE <br><span>REFLECT YOUR STYLE.</span>",
+        heroSubtext: "Pure architectural glass, precision-honed profiles, and timeless reflections designed to sculpt natural light and transform spaces.",
+        exploreCta: "EXPLORE THE 17 DESIGNS",
+        scrollNotice: "SCROLL TO DISCOVER",
+        archiveEyebrow: "PERMANENT ARCHIVE",
+        archiveTitle: "The Mirror Collection",
+        editionCount: "17 EDITIONS",
+        inspectText: "INSPECT SPECIFICATION →",
+        specDimensions: "Dimensions",
+        specMaterial: "Frame Alloy",
+        specGlass: "Glass Clarity",
+        specIllumination: "Illumination",
+        toggleText: "العربية"
+      },
+      ar: {
+        brand: "بيت الزجاج",
+        heroHeadline: "بيت الزجاج <br><span>انعكاسٌ يُلهم أسلوبك.</span>",
+        heroSubtext: "مرايا معمارية فائقة النقاء، وحواف مصقولة ببراعة هندسية تُعيد صياغة الضوء وتمنح منزلك بعداً راقياً واستثنائياً.",
+        exploreCta: "استكشف الـ 17 تصميماً",
+        scrollNotice: "مرر لاكتشاف المجموعة",
+        archiveEyebrow: "المجموعة الحصرية الدائمة",
+        archiveTitle: "مجموعة المرايا المعمارية",
+        editionCount: "17 قطعة فنية",
+        inspectText: "تفاصيل القطعة ←",
+        specDimensions: "الأبعاد",
+        specMaterial: "سبيكة الإطار",
+        specGlass: "نقاء الزجاج",
+        specIllumination: "نمط الإضاءة",
+        toggleText: "English"
+      }
+    };
+
+    let currentLang = 'en';
+
+    /* ========================================================
+       RENDER THE 17 MIRRORS (WHITE THEME)
+    ======================================================== */
+    const mirrorsGrid = document.getElementById('mirrorsGrid');
+
+    function renderMirrors() {
+      mirrorsGrid.innerHTML = '';
+      mirrors.forEach((mirror, idx) => {
+        const card = document.createElement('article');
+        card.className = 'mirror-card';
+        card.setAttribute('data-id', mirror.id);
+        card.tabIndex = 0;
+
+        card.innerHTML = `
+          <div class="mirror-image-container">
+            <span class="mirror-idx">${String(idx + 1).padStart(2, '0')} / 17</span>
+            <span class="mirror-badge-type">${mirror.category[currentLang]}</span>
+            <img class="mirror-img" src="${mirror.img}" alt="${mirror.name[currentLang]}" loading="lazy">
+            <div class="mirror-glass-sheen"></div>
+          </div>
+          <div class="mirror-details">
+            <div>
+              <h3 class="mirror-name">${mirror.name[currentLang]}</h3>
+              <p class="mirror-dim">${mirror.dimensions}</p>
+            </div>
+            <div class="mirror-footer-meta">
+              <span class="mirror-action-text">${translations[currentLang].inspectText}</span>
+            </div>
+          </div>
+        `;
+
+        card.addEventListener('click', () => openModal(mirror));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') openModal(mirror);
+        });
+
+        mirrorsGrid.appendChild(card);
+      });
+
+      setupScrollObserver();
+    }
+
+    /* ========================================================
+       SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+    ======================================================== */
+    function setupScrollObserver() {
+      const cards = document.querySelectorAll('.mirror-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(cards).indexOf(entry.target);
+            const delay = (index % 4) * 85;
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, delay);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      cards.forEach(card => observer.observe(card));
+    }
+
+    /* ========================================================
+       NAVBAR HIDE-ON-SCROLL
+    ======================================================== */
+    const topBar = document.querySelector('.top-bar');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+
+    function updateNavbarOnScroll() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 20 || currentScrollY < lastScrollY) {
+        topBar.classList.remove('nav-hidden');
+      } else if (currentScrollY > lastScrollY) {
+        topBar.classList.add('nav-hidden');
+      }
+
+      lastScrollY = currentScrollY;
+      scrollTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(updateNavbarOnScroll);
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
+    /* ========================================================
+       MODAL INSPECTION INTERACTION
+    ======================================================== */
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalImg = document.getElementById('modalImg');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDim = document.getElementById('modalDim');
+    const modalFrame = document.getElementById('modalFrame');
+    const modalGlass = document.getElementById('modalGlass');
+    const modalLighting = document.getElementById('modalLighting');
+
+    function openModal(mirror) {
+      modalImg.src = mirror.img;
+      modalImg.alt = mirror.name[currentLang];
+      modalCategory.textContent = mirror.category[currentLang];
+      modalTitle.textContent = mirror.name[currentLang];
+      modalDescription.textContent = mirror.desc[currentLang];
+      modalDim.textContent = mirror.dimensions;
+      modalFrame.textContent = mirror.frame[currentLang];
+      modalGlass.textContent = mirror.glass[currentLang];
+      modalLighting.textContent = mirror.lighting[currentLang];
+
+      modalBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    /* ========================================================
+       LANGUAGE TOGGLE (ENGLISH <-> ARABIC)
+    ======================================================== */
+    const langToggle = document.getElementById('langToggle');
+    const langLabel = document.getElementById('langLabel');
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      langLabel.textContent = translations[lang].toggleText;
+      renderMirrors();
+    }
+
+    langToggle.addEventListener('click', () => {
+      const nextLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLanguage(nextLang);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Initial render
+    renderMirrors();
+  </script>
+</body>
+</html>
