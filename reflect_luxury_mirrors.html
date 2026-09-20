@@ -1,1322 +1,1337 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GLASS HOUSE — Luxury Architectural Mirrors</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ========================================================
-       GLOBAL & HERO THEME VARIABLES (DARK LUXURY)
-    ======================================================== */
-    :root {
-      --hero-bg: #070708;
-      --hero-text: #f7f7f4;
-      --hero-muted: #8e8e89;
-      --accent: #d4af37;
-      --accent-champagne: #e8d8b8;
-      --accent-glow: rgba(212, 175, 55, 0.22);
-      --hero-border: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(212, 175, 55, 0.35);
-
-      /* ========================================================
-         SHOWCASE & MODAL THEME VARIABLES (GALLERY WHITE)
-      ======================================================== */
-      --light-bg: #f8f7f4;
-      --light-surface: #ffffff;
-      --light-card-bg: #ffffff;
-      --light-text-heading: #121214;
-      --light-text-body: #4a4a47;
-      --light-text-muted: #7e7e78;
-      --light-border: rgba(0, 0, 0, 0.08);
-      --light-border-hover: rgba(184, 142, 38, 0.5);
-      --light-accent-gold: #b38b29;
-      --light-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-      --light-shadow-hover: 0 20px 45px rgba(0, 0, 0, 0.08), 0 0 20px rgba(184, 142, 38, 0.12);
-
-      --font-display: 'Cinzel', serif;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
-      --font-ar-display: 'Amiri', serif;
-      --font-ar-sans: 'Tajawal', sans-serif;
-      --transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [dir="rtl"] {
-      --font-serif: 'Amiri', serif;
-      --font-sans: 'Tajawal', sans-serif;
-      text-align: right;
-    }
-
-    [dir="rtl"] body {
-      font-family: var(--font-ar-sans);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background-color: var(--hero-bg);
-      color: var(--hero-text);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ========================================================
-       MINIMALIST CLEAN NAVBAR
-    ======================================================== */
-    .top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 2.8rem 5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0);
-      pointer-events: none;
-      transition: transform 0.45s ease, opacity 0.45s ease, padding 0.4s ease;
-    }
-
-    .top-bar.nav-hidden {
-      transform: translateY(-110%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .top-bar.nav-hidden > * {
-      pointer-events: none;
-    }
-
-    .top-bar > * {
-      pointer-events: auto;
-    }
-
-    .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      color: #ffffff;
-      text-decoration: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .brand-logo {
-      display: block;
-      width: 125px;
-      height: 76px;
-      object-fit: contain;
-    }
-
-    [dir="rtl"] .brand-mark {
-      letter-spacing: normal;
-    }
-
-    .brand-mark:hover {
-      opacity: 0.75;
-    }
-
-    .lang-btn {
-      background: none;
-      border: none;
-      padding: 0.65rem 0.35rem;
-      color: #ffffff;
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    [dir="rtl"] .lang-btn {
-      font-family: var(--font-ar-sans);
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .lang-btn:hover {
-      opacity: 1;
-    }
-
-    .lang-divider {
-      display: inline-block;
-      width: 1px;
-      height: 11px;
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    /* ========================================================
-       SECTION 1: HERO (DARK, PRESERVED EXACTLY AS IT IS)
-    ======================================================== */
-    .hero {
-      position: sticky;
-      top: 0;
-      z-index: 0;
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 6rem 2rem 4rem;
-      overflow: hidden;
-      background: var(--hero-bg);
-    }
-
-    .hero-bg-container {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.42) contrast(1.1);
-      transform: scale(1.08);
-      animation: heroZoom 14s ease-out forwards;
-    }
-
-    @keyframes heroZoom {
-      to { transform: scale(1); }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(16,16,20,0.22) 0%, rgba(7,7,8,0.72) 85%),
-                  linear-gradient(to bottom, transparent 100%, var(--light-bg) 100%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(3.2rem, 7.8vw, 7.2rem);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: #fff;
-      margin-bottom: 1.8rem;
-      text-transform: uppercase;
-      animation: fadeInUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    }
-
-    .hero-headline span {
-      font-style: italic;
-      color: var(--accent-champagne);
-      font-family: var(--font-serif);
-    }
-
-    .hero-subtext {
-      font-size: clamp(0.95rem, 1.3vw, 1.15rem);
-      color: #b5b5ad;
-      max-width: 640px;
-      font-weight: 300;
-      margin-bottom: 3rem;
-      line-height: 1.8;
-      animation: fadeInUp 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.1rem 2.8rem;
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent-champagne);
-      font-size: 0.8rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-      animation: fadeInUp 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    }
-
-    .hero-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
-      transition: 0.6s;
-    }
-
-    .hero-cta:hover::before {
-      left: 100%;
-    }
-
-    .hero-cta:hover {
-      background: var(--accent);
-      color: #070708;
-      box-shadow: 0 0 35px var(--accent-glow);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-      opacity: 0.7;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .scroll-indicator span {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--hero-muted);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 45px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      animation: pulseScroll 2.2s infinite;
-    }
-
-    @keyframes pulseScroll {
-      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
-      50% { opacity: 1; transform: scaleY(1.1); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========================================================
-       SECTION 2: 17 MIRRORS (CONVERTED TO LUXURY WHITE THEME)
-    ======================================================== */
-    .showcase-section {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      background-color: var(--light-bg);
-      color: var(--light-text-heading);
-      padding: 7rem 4rem 10rem;
-      max-width: 100%;
-      margin: 0 auto;
-      border-radius: 2rem 2rem 0 0;
-      box-shadow: 0 -18px 45px rgba(0, 0, 0, 0.18);
-      transition: background-color 0.5s ease;
-    }
-
-    .showcase-inner {
-      max-width: 1800px;
-      margin: 0 auto;
-    }
-
-    .showcase-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 3rem;
-      margin-bottom: 3.5rem;
-      border-bottom: 1px solid var(--light-border);
-    }
-
-    .showcase-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--light-accent-gold);
-      margin-bottom: 0.8rem;
-      display: block;
-      font-weight: 500;
-    }
-
-    .showcase-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
-      font-weight: 300;
-      color: var(--light-text-heading);
-      line-height: 1.1;
-    }
-
-    .showcase-counter {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: var(--light-accent-gold);
-      letter-spacing: 0.25em;
-      font-weight: 600;
-    }
-
-    /* Strict 4-per-row grid layout on desktop */
-    .mirrors-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2.2rem;
-      width: 100%;
-    }
-
-    /* White Theme Mirror Card */
-    .mirror-card {
-      position: relative;
-      background: var(--light-card-bg);
-      border: 1px solid var(--light-border);
-      border-radius: 4px;
-      box-shadow: var(--light-shadow);
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.6s;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .mirror-card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .mirror-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--light-border-hover);
-      box-shadow: var(--light-shadow-hover);
-    }
-
-    .mirror-image-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: #ecebe6;
-    }
-
-    .mirror-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s;
-      filter: contrast(1.02) brightness(0.98);
-    }
-
-    .mirror-card:hover .mirror-img {
-      transform: scale(1.08);
-      filter: contrast(1.06) brightness(1.02);
-    }
-
-    /* Crisp Light Reflection Pass */
-    .mirror-glass-sheen {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, 
-                  rgba(255,255,255,0) 0%, 
-                  rgba(255,255,255,0.1) 40%, 
-                  rgba(255,255,255,0.45) 50%, 
-                  rgba(255,255,255,0.1) 60%, 
-                  rgba(255,255,255,0) 100%);
-      transform: translateX(-100%) translateY(-100%);
-      transition: transform 0.9s ease;
-      pointer-events: none;
-    }
-
-    .mirror-card:hover .mirror-glass-sheen {
-      transform: translateX(100%) translateY(100%);
-    }
-
-    .mirror-idx {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: #1a1a1c;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(8px);
-      padding: 0.3rem 0.65rem;
-      border-radius: 2px;
-      z-index: 2;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    [dir="rtl"] .mirror-idx {
-      left: auto;
-      right: 1rem;
-    }
-
-    .mirror-badge-type {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--light-accent-gold);
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(184, 142, 38, 0.3);
-      backdrop-filter: blur(8px);
-      padding: 0.3rem 0.65rem;
-      border-radius: 2px;
-      z-index: 2;
-      font-weight: 500;
-    }
-
-    [dir="rtl"] .mirror-badge-type {
-      right: auto;
-      left: 1rem;
-    }
-
-    .mirror-details {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      justify-content: space-between;
-      border-top: 1px solid var(--light-border);
-      background: var(--light-card-bg);
-    }
-
-    .mirror-name {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--light-text-heading);
-      margin-bottom: 0.35rem;
-      transition: color 0.3s;
-    }
-
-    .mirror-card:hover .mirror-name {
-      color: var(--light-accent-gold);
-    }
-
-    .mirror-dim {
-      font-size: 0.75rem;
-      color: var(--light-text-muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 1.2rem;
-    }
-
-    .mirror-footer-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.9rem;
-      border-top: 1px dashed var(--light-border);
-    }
-
-    .mirror-action-text {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light-accent-gold);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-weight: 600;
-    }
-
-    /* ========================================================
-       MODAL VIEW (CONVERTED TO ELEGANT LIGHT THEME)
-    ======================================================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(18, 18, 20, 0.6);
-      backdrop-filter: blur(16px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 2rem;
-    }
-
-    .modal-backdrop.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-panel {
-      background: var(--light-surface);
-      border: 1px solid var(--light-border);
-      border-radius: 4px;
-      width: 100%;
-      max-width: 960px;
-      max-height: 90vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      position: relative;
-      overflow-y: auto;
-      transform: scale(0.94);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25), 0 0 30px rgba(184, 142, 38, 0.1);
-      color: var(--light-text-heading);
-    }
-
-    .modal-backdrop.active .modal-panel {
-      transform: scale(1);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--light-border);
-      color: var(--light-text-heading);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: var(--transition);
-      backdrop-filter: blur(6px);
-    }
-
-    [dir="rtl"] .modal-close-btn {
-      right: auto;
-      left: 1.5rem;
-    }
-
-    .modal-close-btn:hover {
-      background: var(--light-accent-gold);
-      color: #fff;
-    }
-
-    .modal-image-side {
-      position: relative;
-      height: 100%;
-      min-height: 480px;
-      background: #eee;
-    }
-
-    .modal-image-side img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .modal-info-side {
-      padding: 3.5rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #ffffff;
-    }
-
-    .modal-subtitle {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--light-accent-gold);
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
-
-    .modal-title {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-      color: var(--light-text-heading);
-      font-weight: 600;
-    }
-
-    .modal-desc {
-      color: var(--light-text-body);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    .specs-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-    }
-
-    .specs-table tr {
-      border-bottom: 1px solid var(--light-border);
-    }
-
-    .specs-table td {
-      padding: 0.75rem 0;
-      font-size: 0.85rem;
-    }
-
-    .spec-label {
-      color: var(--light-text-muted);
-      width: 45%;
-      letter-spacing: 0.08em;
-      font-weight: 500;
-    }
-
-    .spec-value {
-      color: var(--light-text-heading);
-      font-weight: 500;
-    }
-
-    /* Responsive Breakpoints */
-    @media (max-width: 1440px) {
-      .mirrors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.6rem;
-      }
-      .showcase-section {
-        padding: 6rem 2.5rem 8rem;
-      }
-    }
-
-    @media (max-width: 1100px) {
-      .mirrors-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .top-bar {
-        padding: 2.2rem 3rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .top-bar {
-        padding: 1.8rem 2rem;
-      }
-      .brand-mark {
-        font-size: 1rem;
-      }
-      .brand-logo {
-        width: 100px;
-        height: 61px;
-      }
-      .lang-btn,
-      [dir="rtl"] .lang-btn {
-        font-size: 0.95rem;
-      }
-      .mirrors-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-      }
-      .modal-panel {
-        grid-template-columns: 1fr;
-        max-height: 85vh;
-      }
-      .modal-image-side {
-        min-height: 320px;
-      }
-      .modal-info-side {
-        padding: 2rem 1.5rem;
-      }
-      .showcase-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .mirrors-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glass House — Contemporary Mirrors</title>
+<meta name="description" content="Glass House — contemporary mirrors designed for modern spaces. Explore the collection.">
+<meta name="theme-color" content="#000000">
+
+<link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+/* ==========================================================================
+   DESIGN SYSTEM
+   Palette   : white, paper (warm gray), black, one silver. Nothing else.
+   Type      : Jost only. Display 200, body 300, metadata 400 with tracking.
+   Spacing   : 8-pt scale (--s-1 … --s-7), fluid gutter, fluid section rhythm.
+   Geometry  : square corners, 1px hairlines, shadows only inside the viewer.
+   ========================================================================== */
+:root {
+  --white: #ffffff;
+  --paper: #f2f1ef;
+  --black: #000000;
+  --gray: #6d6b67;
+  --gray-inv: #a6a4a0;
+  --silver: #b9bbbe;
+  --line: rgba(0, 0, 0, .12);
+  --line-inv: rgba(255, 255, 255, .2);
+
+  --font: 'Jost', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --s-1: .5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2.5rem;
+  --s-5: 4rem;
+  --s-6: 6.5rem;
+  --s-7: 10rem;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --col-gap: clamp(.75rem, 2vw, 2rem);
+  --header-h: 4.5rem;
+
+  --fs-meta: .6875rem;
+  --fs-body: 1rem;
+  --fs-sub: clamp(1rem, 1.25vw, 1.1875rem);
+  --fs-head: clamp(2.5rem, 5.2vw, 5rem);
+  --fs-display: clamp(2.6rem, 9.5vw, 10.5rem);
+
+  --ease: cubic-bezier(.22, .7, .12, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+html.is-locked { overflow: hidden; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--black);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; }
+
+:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+
+.skip {
+  position: fixed; left: var(--gutter); top: .75rem; z-index: 300;
+  padding: .6rem 1rem; background: var(--white); color: var(--black);
+  font-size: var(--fs-meta); letter-spacing: .16em; text-transform: uppercase;
+  transform: translateY(-200%);
+}
+.skip:focus { transform: none; }
+
+/* --------------------------------------------------------------------------
+   Load curtain — one orchestrated entrance
+   -------------------------------------------------------------------------- */
+.curtain {
+  position: fixed; inset: 0; z-index: 200; background: var(--black);
+  pointer-events: none; opacity: 1;
+  transition: opacity 1.2s var(--ease-io) .15s;
+}
+html:not(.js) .curtain { display: none; }
+.is-ready .curtain { opacity: 0; }
+.js .curtain { animation: curtain-out 1s 4s forwards; }
+@keyframes curtain-out { to { opacity: 0; } }
+
+/* --------------------------------------------------------------------------
+   Navigation
+   The small wordmark is a separate fixed layer so it can blend with what is
+   behind it. It stays hidden over the hero, where the large logo takes over.
+   -------------------------------------------------------------------------- */
+.brand {
+  position: fixed; z-index: 51; top: 0; left: var(--gutter);
+  height: var(--header-h); display: flex; align-items: center;
+}
+.brand img, .foot__brand img { height: 1.75rem; width: auto; }
+
+.bar {
+  position: fixed; z-index: 50; inset: 0 0 auto 0; height: var(--header-h);
+  padding: 0 var(--gutter); display: flex; align-items: center; justify-content: flex-end;
+  border-bottom: 1px solid transparent;
+  transition: background-color .6s var(--ease), border-color .6s var(--ease);
+}
+.bar::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  -webkit-backdrop-filter: saturate(1.4) blur(18px); backdrop-filter: saturate(1.4) blur(18px);
+  transition: opacity .6s var(--ease);
+}
+body[data-nav="light"] .bar { background: rgba(255, 255, 255, .8); border-color: var(--line); }
+body[data-nav="dark"]  .bar { background: rgba(0, 0, 0, .55);       border-color: var(--line-inv); }
+body[data-nav="light"] .bar::before,
+body[data-nav="dark"]  .bar::before { opacity: 1; }
+
+.nav { display: flex; gap: clamp(1.25rem, 3.5vw, 3.5rem); }
+.nav a {
+  position: relative; padding: .5rem 0;
+  font-size: var(--fs-meta); font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--white);
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - .3rem) / 0 1px no-repeat;
+  transition: color .5s var(--ease), background-size .5s var(--ease);
+}
+.nav a:hover, .nav a:focus-visible { background-size: 100% 1px; }
+body[data-nav="light"] .nav a { color: var(--black); }
+
+/* logo treatments — picked at runtime by measuring the logo file (see analyzeLogo)
+   a  transparent, dark artwork    b  transparent, light artwork
+   c  opaque, light background     d  opaque, dark background     plain  untouched */
+:root {
+  --lf-dark: none;  --lb-dark: normal;
+  --lf-light: none; --lb-light: normal;
+}
+html[data-l="a"] { --lf-dark: brightness(0) invert(1); --lf-light: none; }
+html[data-l="b"] { --lf-dark: none; --lf-light: brightness(0); }
+html[data-l="c"] { --lf-dark: invert(1); --lb-dark: screen; --lf-light: none; --lb-light: multiply; }
+html[data-l="d"] { --lf-dark: none; --lb-dark: screen; --lf-light: invert(1); --lb-light: multiply; }
+
+.js .logo-img { opacity: 0; transition: opacity 1s var(--ease-io); }
+html[data-l] .logo-img { opacity: 1; }
+
+.brand { mix-blend-mode: var(--lb-dark); transition: opacity .6s var(--ease); }
+.brand img { filter: var(--lf-dark); }
+body[data-nav="hero"] .brand { opacity: 0; pointer-events: none; }
+body[data-nav="light"] .brand { mix-blend-mode: var(--lb-light); }
+body[data-nav="light"] .brand img { filter: var(--lf-light); }
+.foot__brand { display: block; mix-blend-mode: var(--lb-dark); }
+.foot__brand img { filter: var(--lf-dark); }
+
+.brand { gap: .9rem; }
+.brand__name {
+  font-size: .8125rem; font-weight: 400; letter-spacing: .34em; text-transform: uppercase;
+  white-space: nowrap; color: var(--white); transition: color .5s var(--ease);
+}
+body[data-nav="light"] .brand__name { color: var(--black); }
+.foot__brand { display: flex; align-items: center; gap: .9rem; }
+.foot__brand .brand__name { color: var(--white); }
+.foot__wa {
+  font-size: var(--fs-meta); font-weight: 400; letter-spacing: .14em; color: var(--gray-inv);
+  padding: .5rem 0; transition: color .4s var(--ease);
+}
+.foot__wa:hover, .foot__wa:focus-visible { color: var(--white); }
+.hero__name {
+  margin-top: 1.25rem; text-align: center; color: var(--white);
+  font-size: clamp(.8125rem, 1.4vw, 1.125rem); font-weight: 300; letter-spacing: .5em; text-transform: uppercase;
+  padding-left: .5em;
+}
+
+.hero__logo {
+  position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center;
+  padding: var(--header-h) var(--gutter) 22svh; pointer-events: none; mix-blend-mode: var(--lb-dark);
+}
+.hero__mark { width: clamp(15rem, 28vw, 26rem); }
+.hero__mark img { width: 100%; height: auto; filter: var(--lf-dark); }
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+.hero { position: relative; height: 175svh; background: var(--black); }
+.hero__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--black); }
+.hero__video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transform-origin: 50% 60%; will-change: transform;
+}
+.hero__shade {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, .58), rgba(0, 0, 0, 0) 46%),
+    linear-gradient(to bottom, rgba(0, 0, 0, .38), rgba(0, 0, 0, 0) 22%);
+}
+.hero__dim { position: absolute; inset: 0; background: var(--black); opacity: 0; pointer-events: none; }
+
+.hero__copy {
+  position: absolute; z-index: 2; left: var(--gutter); right: var(--gutter);
+  bottom: clamp(1.75rem, 6svh, 3.5rem); padding-top: var(--s-3);
+  border-top: 1px solid rgba(255, 255, 255, .3);
+  display: grid; grid-template-columns: 1fr auto; align-items: end; gap: var(--s-5);
+  color: var(--white); will-change: transform, opacity;
+}
+.hero__title {
+  font-size: clamp(1.5rem, 2.9vw, 2.75rem); font-weight: 200; line-height: 1.1;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.hero__title .line { display: inline-block; overflow: hidden; padding-bottom: .12em; margin-right: .3em; vertical-align: top; }
+.hero__title .line > span { display: block; }
+.hero__aside { display: flex; align-items: flex-end; gap: clamp(2rem, 5vw, 4.5rem); }
+.hero__sub { max-width: 16rem; }
+.hero__sub { font-size: var(--fs-sub); line-height: 1.5; color: rgba(255, 255, 255, .86); }
+.hero__cta {
+  padding-bottom: .45rem; border-bottom: 1px solid rgba(255, 255, 255, .55);
+  font-size: .75rem; font-weight: 400; letter-spacing: .22em; text-transform: uppercase;
+  transition: border-color .5s var(--ease), letter-spacing .6s var(--ease);
+}
+.hero__cta:hover, .hero__cta:focus-visible { border-color: var(--white); letter-spacing: .27em; }
+
+.js .hero__title .line > span { transform: translate3d(0, 112%, 0); transition: transform 1.4s var(--ease); }
+.js .hero__sub, .js .hero__cta { opacity: 0; transition: opacity 1.2s var(--ease-io) 1s; }
+.is-ready .hero__title .line > span { transform: none; }
+.is-ready .hero__sub, .is-ready .hero__cta { opacity: 1; }
+.js .hero__title .line > span { transition-delay: .55s; }
+.js .hero__title .line:nth-child(2) > span { transition-delay: .7s; }
+
+/* --------------------------------------------------------------------------
+   Collection intro
+   -------------------------------------------------------------------------- */
+.intro {
+  background: var(--paper);
+  padding: clamp(7rem, 24svh, 14rem) var(--gutter) clamp(4rem, 10svh, 7rem);
+}
+.intro__inner {
+  max-width: 1760px; margin-inline: auto;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--col-gap);
+}
+.intro__title { grid-column: 1 / -1; }
+.intro__rule { grid-column: 1 / -1; height: 1px; background: var(--line); margin-top: clamp(2rem, 4.5vw, 4rem); }
+.intro__title {
+  font-size: var(--fs-display); font-weight: 200; line-height: .92;
+  letter-spacing: .02em; text-transform: uppercase;
+  display: flex; flex-wrap: wrap; column-gap: .28em;
+}
+.intro__title .word { display: inline-block; white-space: nowrap; }
+.intro__title .ch { display: inline-block; }
+.intro__text {
+  grid-column: 1 / span 4; margin: var(--s-3) 0 0; max-width: 23rem;
+  font-size: var(--fs-sub); line-height: 1.6; color: var(--gray);
+}
+
+/* --------------------------------------------------------------------------
+   Gallery — asymmetric 12-column spreads
+   -------------------------------------------------------------------------- */
+.gallery {
+  background: var(--paper);
+  padding: 0 var(--gutter) clamp(7rem, 14vw, 14rem);
+}
+.gallery__inner { max-width: 1760px; margin-inline: auto; }
+.spread {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--col-gap);
+  align-items: start; margin-bottom: clamp(4rem, 9vw, 9rem);
+}
+.spread:last-child { margin-bottom: 0; }
+.piece { grid-column: var(--c); margin-top: var(--mt, 0); align-self: var(--as, start); min-width: 0; }
+
+.piece__btn {
+  display: block; width: 100%; padding: 0; border: 0; background: none;
+  text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.frame {
+  position: relative; display: block; overflow: hidden;
+  aspect-ratio: var(--r); background: #e4e2de;
+  transition: transform .7s var(--ease);
+}
+.shift { position: absolute; inset: -7% 0; display: block; will-change: transform; }
+.shift img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.frame::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 40%; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+  opacity: 0; transition: opacity .6s var(--ease);
+}
+.meta {
+  position: absolute; z-index: 1; left: var(--s-3); bottom: var(--s-3); right: var(--s-3);
+  display: grid; gap: .1rem; color: var(--white); pointer-events: none;
+  opacity: 0; transform: translate3d(0, 8px, 0);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.meta__name { font-size: var(--fs-meta); font-weight: 400; letter-spacing: .2em; text-transform: uppercase; }
+.meta__line { font-size: .8125rem; font-weight: 300; opacity: .85; }
+
+.piece.is-lifted .frame { visibility: hidden; }
+
+@media (hover: hover) {
+  .piece__btn:hover .frame { transform: translate3d(0, -4px, 0); }
+  .piece__btn:hover .frame::after { opacity: 1; }
+  .piece__btn:hover .meta { opacity: 1; transform: none; }
+}
+.piece__btn:focus-visible .frame::after { opacity: 1; }
+.piece__btn:focus-visible .meta { opacity: 1; transform: none; }
+@media (hover: none) {
+  .frame::after { opacity: 1; height: 34%; }
+  .meta { opacity: 1; transform: none; left: var(--s-2); bottom: var(--s-2); }
+}
+
+/* reveal — a soft wipe, then the image settles */
+.js .piece .frame { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease), transform .7s var(--ease); }
+.js .piece.in .frame { clip-path: inset(0 0 0 0); }
+.js .piece .shift img { transform: scale(1.14); transition: transform 1.7s var(--ease); }
+.js .piece.in .shift img { transform: scale(1); }
+.js .piece.in .piece__btn:hover .shift img { transform: scale(1.035); transition-duration: .8s; }
+
+.spread--drift { will-change: transform; }
+
+/* --------------------------------------------------------------------------
+   Craftsmanship — pinned, three statements
+   -------------------------------------------------------------------------- */
+.craft { position: relative; background: var(--black); color: var(--white); }
+.craft__track { height: 400vh; }
+.craft__stage {
+  position: sticky; top: 0; height: 100svh;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--col-gap);
+  align-items: center; padding: var(--header-h) var(--gutter) 0;
+  max-width: 1760px; margin-inline: auto;
+}
+.craft__copy { grid-column: 1 / span 5; grid-row: 1; position: relative; min-height: 20rem; }
+.craft__item {
+  position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translate3d(0, 1.25rem, 0);
+  transition: opacity .8s var(--ease), transform 1s var(--ease); pointer-events: none;
+}
+.craft__item.on { opacity: 1; transform: none; }
+.craft__item h2 { font-size: var(--fs-head); font-weight: 200; line-height: 1; letter-spacing: -.005em; }
+.craft__item p { margin-top: var(--s-3); max-width: 22rem; font-size: var(--fs-sub); line-height: 1.6; color: var(--gray-inv); }
+.craft__bar {
+  position: absolute; left: 0; bottom: 0; width: 8rem; height: 1px;
+  background: var(--line-inv); overflow: hidden;
+}
+.craft__bar i { display: block; height: 100%; background: var(--white); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+
+.craft__media {
+  grid-column: 7 / span 6; grid-row: 1; justify-self: end; position: relative; overflow: hidden;
+  width: min(100%, calc(78svh * .8)); aspect-ratio: 4 / 5; background: #111;
+}
+.craft__media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.08);
+  transition: opacity 1.1s var(--ease-io), transform 1.8s var(--ease);
+}
+.craft__media img.on { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   Brand statement — a black edge rises through the type
+   -------------------------------------------------------------------------- */
+.statement { position: relative; }
+.statement__track { height: 240vh; }
+.statement__stage { position: sticky; top: 0; height: 100svh; overflow: hidden; background: var(--white); }
+.layer {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  padding: calc(var(--header-h) + 1.5rem) var(--gutter) clamp(2.5rem, 7svh, 5rem);
+  max-width: none;
+}
+.layer--light { color: var(--black); }
+.layer--dark { background: var(--black); color: var(--white); clip-path: inset(100% 0 0 0); will-change: clip-path; }
+.statement__big {
+  margin: auto 0; font-size: clamp(3.25rem, 12vw, 12.5rem); font-weight: 200;
+  line-height: .92; letter-spacing: -.01em;
+}
+.statement__small { align-self: flex-end; max-width: 17rem; font-size: var(--fs-sub); line-height: 1.55; }
+.layer--light .statement__small { color: var(--gray); }
+.layer--dark  .statement__small { color: var(--gray-inv); }
+
+/* --------------------------------------------------------------------------
+   Contact + footer
+   -------------------------------------------------------------------------- */
+.contact {
+  background: var(--black); color: var(--white); min-height: 100svh;
+  display: flex; align-items: center; padding: var(--s-7) var(--gutter);
+}
+.contact__inner { width: 100%; max-width: 1760px; margin-inline: auto; }
+.contact__title {
+  font-size: clamp(2.6rem, 8vw, 8.5rem); font-weight: 200; line-height: .98;
+  letter-spacing: .02em; text-transform: uppercase; text-wrap: balance;
+}
+.contact__text { margin: var(--s-4) 0 var(--s-5); max-width: 24rem; font-size: var(--fs-sub); line-height: 1.6; color: var(--gray-inv); }
+.cta {
+  display: inline-block; padding: 1.15rem 2.9rem; border: 1px solid rgba(255, 255, 255, .7);
+  font-size: .75rem; font-weight: 400; letter-spacing: .22em; text-transform: uppercase;
+  transition: background-color .5s var(--ease), color .5s var(--ease), border-color .5s var(--ease), transform .4s var(--ease);
+}
+.cta:hover, .cta:focus-visible { background: var(--white); color: var(--black); border-color: var(--white); }
+
+.foot {
+  background: var(--black); color: var(--white); border-top: 1px solid var(--line-inv);
+  padding: var(--s-4) var(--gutter) calc(var(--s-4) + env(safe-area-inset-bottom, 0px));
+}
+.foot__inner {
+  max-width: 1760px; margin-inline: auto; display: flex; align-items: center;
+  justify-content: space-between; gap: var(--s-4); flex-wrap: wrap;
+}
+.foot__nav { display: flex; gap: clamp(1.25rem, 3.5vw, 3rem); }
+.foot__nav a {
+  padding: .5rem 0; font-size: var(--fs-meta); font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gray-inv); transition: color .4s var(--ease);
+}
+.foot__nav a:hover, .foot__nav a:focus-visible { color: var(--white); }
+
+/* --------------------------------------------------------------------------
+   Cursor (desktop, fine pointers only)
+   -------------------------------------------------------------------------- */
+.cursor { position: fixed; left: 0; top: 0; z-index: 120; pointer-events: none; opacity: 0; mix-blend-mode: difference; transition: opacity .4s; }
+.cursor.is-active { opacity: 1; }
+.cursor i {
+  position: absolute; left: 0; top: 0; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-radius: 50%; background: #fff; display: grid; place-items: center;
+  transition: width .5s var(--ease), height .5s var(--ease), margin .5s var(--ease);
+}
+.cursor span { font-size: .6875rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #000; opacity: 0; transition: opacity .3s; }
+.cursor.is-view i { width: 88px; height: 88px; margin: -44px 0 0 -44px; }
+.cursor.is-view span { opacity: 1; transition-delay: .15s; }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+/* --------------------------------------------------------------------------
+   Product viewer
+   -------------------------------------------------------------------------- */
+.viewer { position: fixed; inset: 0; z-index: 90; color: var(--white); visibility: hidden; }
+.viewer.is-on { visibility: visible; }
+.viewer__bg { position: absolute; inset: 0; background: var(--black); opacity: 0; transition: opacity .55s var(--ease-io); }
+.viewer.is-open .viewer__bg { opacity: 1; }
+.viewer__ui { opacity: 0; transition: opacity .45s var(--ease-io); }
+.viewer.is-open .viewer__ui { opacity: 1; transition-delay: .3s; }
+
+.viewer__stage { position: absolute; inset: 4.5rem 6rem 6rem; touch-action: pan-y; }
+.viewer__img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  user-select: none; -webkit-user-drag: none;
+}
+.ghost { position: fixed; z-index: 95; margin: 0; max-width: none; object-fit: cover; pointer-events: none; will-change: left, top, width, height, clip-path; }
+
+.viewer__count, .viewer__close {
+  position: absolute; top: 0; height: 4.5rem; display: flex; align-items: center;
+  font-size: var(--fs-meta); font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
+}
+.viewer__count { left: var(--gutter); }
+.viewer__close { right: var(--gutter); padding: 0 .25rem; border: 0; background: none; cursor: pointer; }
+.viewer__close span { padding: .5rem 0; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .5s var(--ease); }
+.viewer__close:hover span, .viewer__close:focus-visible span { background-size: 100% 1px; }
+
+.viewer__nav {
+  position: absolute; top: 50%; width: 3.5rem; height: 3.5rem; margin-top: -1.75rem;
+  display: grid; place-items: center; border: 0; background: none; cursor: pointer;
+  opacity: .8; transition: opacity .4s, transform .5s var(--ease);
+}
+.viewer__nav:hover, .viewer__nav:focus-visible { opacity: 1; }
+.viewer__nav--prev { left: 1.25rem; }
+.viewer__nav--next { right: 1.25rem; }
+.viewer__nav--prev:hover { transform: translateX(-3px); }
+.viewer__nav--next:hover { transform: translateX(3px); }
+
+.viewer__info { position: absolute; left: var(--gutter); bottom: 1.75rem; display: grid; gap: .15rem; }
+.viewer__name { font-size: var(--fs-meta); font-weight: 400; letter-spacing: .2em; text-transform: uppercase; }
+.viewer__line { font-size: .875rem; color: var(--gray-inv); }
+
+/* --------------------------------------------------------------------------
+   Tablet + mobile: one calm two-column flow, a few full-width moments
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .hero__copy { grid-template-columns: 1fr; gap: var(--s-2); }
+  .hero__aside { flex-direction: column; align-items: flex-start; gap: var(--s-2); }
+  .hero__sub { max-width: 22rem; }
+
+  .gallery__inner { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s-2); row-gap: var(--s-5); }
+  .spread { display: contents; }
+  .piece { grid-column: auto; margin-top: 0; align-self: start; }
+  .piece.is-full { grid-column: 1 / -1; }
+  .piece.is-alt { margin-top: var(--s-4); }
+  .frame { aspect-ratio: 3 / 4; }
+  .piece.is-full .frame { aspect-ratio: 4 / 5; }
+
+  .craft__track { height: 340vh; }
+  .craft__stage { grid-template-columns: 1fr; grid-template-rows: auto auto; align-content: center; row-gap: var(--s-4); padding-top: calc(var(--header-h) + .5rem); }
+  .craft__media { grid-column: 1; grid-row: 1; justify-self: center; width: min(100%, calc(46svh * .8)); }
+  .craft__copy { grid-column: 1; grid-row: 2; min-height: 13rem; }
+  .craft__item h2 { font-size: clamp(2.25rem, 9vw, 3.5rem); }
+  .craft__bar { display: none; }
+
+  .intro__text { grid-column: 1 / -1; }
+  .statement__track { height: 220vh; }
+  .contact { padding-block: var(--s-6); }
+
+  .viewer__stage { inset: 4rem 0 7.5rem; }
+  .viewer__nav { top: auto; bottom: 1rem; margin-top: 0; }
+  .viewer__nav--next { right: calc(var(--gutter) - .75rem); }
+  .viewer__nav--prev { left: auto; right: calc(var(--gutter) + 2.75rem); }
+  .viewer__info { bottom: 1.5rem; max-width: 55%; }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gallery__inner { column-gap: var(--s-3); row-gap: var(--s-6); }
+}
+@media (max-width: 639px) {
+  :root { --header-h: 3.75rem; }
+  .brand img, .foot__brand img { height: 1.4rem; }
+  .hero__logo { padding-bottom: 34svh; }
+  .hero__mark { width: clamp(11rem, 56vw, 17rem); }
+  .hero__title .line { display: block; margin-right: 0; }
+  .hero__title { font-size: clamp(1.75rem, 8vw, 2.25rem); }
+  .brand .brand__name { display: none; }
+  .nav { gap: 1.1rem; }
+  .nav a { letter-spacing: .14em; font-size: .625rem; }
+  .foot__inner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 359px) {
+  .nav { gap: .8rem; }
+  .nav a { letter-spacing: .08em; }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .curtain { transition-duration: .01s; }
+  .js .hero__title .line > span, .js .hero__sub, .js .hero__cta { transition-duration: .01s; transition-delay: 0s; }
+  .js .piece .frame { clip-path: none; transition: none; }
+  .js .piece .shift img { transform: none; transition: none; }
+  .frame, .meta, .craft__item, .craft__media img { transition-duration: .01s; }
+  .craft__item, .craft__media img { transform: none; }
+}
+</style>
 </head>
-<body>
 
-  <!-- Minimalist Architectural Navbar -->
-  <header class="top-bar">
-    <a href="#" class="brand-mark" aria-label="Glass House home">
-      <img class="brand-logo" src="./icon/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="Glass House logo">
+<body data-nav="hero">
+<a class="skip" href="#gallery">Skip to collection</a>
+<div class="curtain" aria-hidden="true"></div>
+
+<div id="page">
+
+  <div class="chrome">
+    <a class="brand" href="#top" aria-label="Glass House, back to top">
+      <img class="logo-img" src="https://ik.imagekit.io/qwyda5souj/glass%20house/photos/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="" decoding="async">
+      <span class="brand__name">Glass House</span>
     </a>
-    <button class="lang-btn" id="langToggle" aria-label="Translate website language">
-      <span id="langLabel">العربية</span>
-      <span class="lang-divider"></span>
-      <span>EN</span>
-    </button>
-  </header>
-
-  <!-- ========================================================
-       SECTION 1: HERO (DARK, PRESERVED EXACTLY AS PROVIDED)
-  ======================================================== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-container">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" alt="Glass House Luxury Interior Mirror" class="hero-bg">
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="hero-content">
-      <h1 class="hero-headline" data-i18n="heroHeadline">
-        GLASS HOUSE <br>
-        <span>REFLECT YOUR STYLE.</span>
-      </h1>
-
-      <p class="hero-subtext" data-i18n="heroSubtext">
-        Pure architectural glass, precision-honed profiles, and timeless reflections designed to sculpt natural light and transform spaces.
-      </p>
-
-      <a href="#collection" class="hero-cta" data-i18n="exploreCta">
-        EXPLORE THE 17 DESIGNS
-      </a>
-    </div>
-
-
-  </section>
-
-  <!-- ========================================================
-       SECTION 2: 17 MIRROR ARCHIVE (WHITE THEME GALLERY)
-  ======================================================== -->
-  <main class="showcase-section" id="collection">
-    <div class="showcase-inner">
-      <div class="showcase-header">
-        <div>
-          <span class="showcase-eyebrow" data-i18n="archiveEyebrow">PERMANENT ARCHIVE</span>
-          <h2 class="showcase-title" data-i18n="archiveTitle">The Mirror Collection</h2>
-        </div>
-        <div class="showcase-counter">
-          <span data-i18n="editionCount">17 EDITIONS</span>
-        </div>
-      </div>
-
-      <div class="mirrors-grid" id="mirrorsGrid">
-        <!-- Rendered dynamically -->
-      </div>
-    </div>
-  </main>
-
-  <!-- Product Inspection Modal (White Theme) -->
-  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true">
-    <div class="modal-panel">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close details">✕</button>
-      <div class="modal-image-side">
-        <img id="modalImg" src="" alt="Selected Mirror">
-      </div>
-      <div class="modal-info-side">
-        <span class="modal-subtitle" id="modalCategory">ARCHITECTURAL</span>
-        <h3 class="modal-title" id="modalTitle">Aurelia</h3>
-        <p class="modal-desc" id="modalDescription">High-precision crafted mirror with opti-white low iron purity.</p>
-        
-        <table class="specs-table">
-          <tr>
-            <td class="spec-label" data-i18n="specDimensions">Dimensions</td>
-            <td class="spec-value" id="modalDim">120 cm ⌀</td>
-          </tr>
-          <tr>
-            <td class="spec-label" data-i18n="specMaterial">Frame Alloy</td>
-            <td class="spec-value" id="modalFrame">Brushed Champagne Brass</td>
-          </tr>
-          <tr>
-            <td class="spec-label" data-i18n="specGlass">Glass Clarity</td>
-            <td class="spec-value" id="modalGlass">Low-Iron Ultra-Clear (4mm)</td>
-          </tr>
-          <tr>
-            <td class="spec-label" data-i18n="specIllumination">Illumination</td>
-            <td class="spec-value" id="modalLighting">2700K Warm Ambient Backlight</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <header class="bar">
+      <nav class="nav" aria-label="Primary">
+        <a href="#collection">Collection</a>
+        <a href="#craft">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
   </div>
 
-  <script>
-    /* ========================================================
-       17 CURATED LUXURY MIRROR DATASET
-    ======================================================== */
-    const mirrors = [
-      {
-        id: 1,
-        name: { en: "Aurelia Round", ar: "أوريليا الدائرية" },
-        category: { en: "Circular", ar: "دائري" },
-        dimensions: "120 cm ⌀",
-        frame: { en: "Brushed Champagne Brass", ar: "نحاس شامبانيا مصقول" },
-        glass: { en: "Low-Iron Ultra-Clear 6mm", ar: "زجاج منخفض الحديد فائق النقاء 6 ملم" },
-        lighting: { en: "2700K Ambient LED Edge", ar: "إضاءة ليد محيطية 2700 كلفن" },
-        desc: { 
-          en: "A flawless circular statement piece crowned with hand-finished champagne brass accents.",
-          ar: "تحفة فنية دائرية متقنة ومحاطة بلمسات نهائية من النحاس بلون الشامبانيا المصقول يدوياً."
-        },
-        img: "./photos/WhatsApp Image 2026-09-20 at 12.07.57 AM.jpeg"
-      },
-      {
-        id: 2,
-        name: { en: "Eclipse Grand", ar: "إكليبس جراند" },
-        category: { en: "Floor", ar: "مرآة أرضية" },
-        dimensions: "210 × 100 cm",
-        frame: { en: "Deep Anodized Obsidian", ar: "ألومنيوم بلون حجر السج المؤكسد" },
-        glass: { en: "Ultra-Clear Float Glass", ar: "زجاج عائم فائق الوضوح" },
-        lighting: { en: "Subtle Halo Backlight", ar: "إضاءة هالة خلفية ناعمة" },
-        desc: { 
-          en: "Full-height architectural presence with a knife-edge profile for modern dressing suites.",
-          ar: "حضور معماري بارتفاع كامل بتصميم حواف فائقة الدقة لأجنحة غرف الملابس العصرية."
-        },
-        img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 3,
-        name: { en: "Halo Luminary", ar: "هالو لوميناري" },
-        category: { en: "Illuminated", ar: "مضيئة" },
-        dimensions: "95 × 95 cm",
-        frame: { en: "Seamless Brushed Nickel", ar: "نيكل مصقول بدون فواصل" },
-        glass: { en: "Opti-White Reflection Core", ar: "قلب انعكاس أوبتي-وايت نقي" },
-        lighting: { en: "Continuous CRI 98 Backlight", ar: "إضاءة خلفية دقيقة نقاء CRI 98" },
-        desc: { 
-          en: "Integrates uniform shadowless perimeter glow that elevates master bathrooms into private spas.",
-          ar: "تدمج إضاءة محيطية متجانسة بلا ظلال تنقل الحمامات الرئيسية إلى مستوى المنتجعات الخاصة."
-        },
-        img: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 4,
-        name: { en: "Archway Horizon", ar: "أركواي هورايزون" },
-        category: { en: "Arch", ar: "قوس معماري" },
-        dimensions: "200 × 90 cm",
-        frame: { en: "Forged Matte Iron", ar: "حديد مطروق بلون غير لامع" },
-        glass: { en: "High-Index Silver Backing", ar: "بطانة فضية عالية الانعكاس" },
-        lighting: { en: "Passive Light Capture", ar: "التقاط ضوء طبيعي" },
-        desc: { 
-          en: "Soft neoclassical arched curvature crafted to frame vertical sightlines and elevate ceilings.",
-          ar: "انحناءة قوس كلاسيكية ناعمة صُممت لتعزيز الخطوط الرأسية وإبراز ارتفاع الأسقف."
-        },
-        img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 5,
-        name: { en: "Linea Minimalist", ar: "لينيا مينيماليست" },
-        category: { en: "Rectangular", ar: "مستطيلة" },
-        dimensions: "180 × 80 cm",
-        frame: { en: "Micro-Border Brushed Bronze", ar: "إطار دقيق من البرونز المصقول" },
-        glass: { en: "Opti-Clear Mirror Surface", ar: "سطح مرآة فائق النقاء" },
-        lighting: { en: "Optional Recessed Glow", ar: "إضاءة غائرة اختيارية" },
-        desc: { 
-          en: "Understated geometric discipline delivering absolute clarity and serene spatial proportion.",
-          ar: "دقة هندسية هادئة تمنح وضوحاً مطلقاً وتناغماً بصرياً للمساحات الراقية."
-        },
-        img: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 6,
-        name: { en: "Luna Organic", ar: "لونا العضوية" },
-        category: { en: "Sculptural", ar: "منحوتة" },
-        dimensions: "135 × 110 cm",
-        frame: { en: "Frameless Polished Bevel", ar: "بدون إطار بحواف مصقولة مشطوفة" },
-        glass: { en: "Ultra-Pure Float Glass", ar: "زجاج عائم عالي النقاء" },
-        lighting: { en: "Diffused Wall Wash", ar: "إضاءة جدارية متناغمة" },
-        desc: { 
-          en: "Asymmetric free-flowing contour inspired by river pebbles and liquid reflections.",
-          ar: "انسيابية غير متناظرة مستوحاة من أحجار الأنهار الطبيعية وانعكاسات المياه."
-        },
-        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 7,
-        name: { en: "Palazzo Heritage", ar: "بالاتزو هيريتدج" },
-        category: { en: "Decorative", ar: "تراثي" },
-        dimensions: "160 × 95 cm",
-        frame: { en: "Antiqued Gold Leaf Foil", ar: "ورق ذهب معتق يدوياً" },
-        glass: { en: "Distressed Mirror Glass", ar: "زجاج مرآة كلاسيكي معتق" },
-        lighting: { en: "Warm Candlelight Reflection", ar: "عاكس ضوء دافئ" },
-        desc: { 
-          en: "Venetian-inspired detailing that marries royal traditional craftsmanship with modern balance.",
-          ar: "تفاصيل مستوحاة من فن البندقية تجمع بين الفخامة الملكية والتوازن المعاصر."
-        },
-        img: "https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 8,
-        name: { en: "Solstice Capsule", ar: "سولستيس كبسولة" },
-        category: { en: "Capsule", ar: "كبسولة" },
-        dimensions: "170 × 65 cm",
-        frame: { en: "Brushed Gunmetal Steel", ar: "فولاذ مصقول بلون الرصاص الداكن" },
-        glass: { en: "Opti-Clear Premium", ar: "زجاج أوبتي-كلير الممتاز" },
-        lighting: { en: "Side-Channel Luminescence", ar: "إضاءة جانبية خافتة" },
-        desc: { 
-          en: "Elongated pill silhouette that imparts soft vertical movement and light into entryways.",
-          ar: "تصميم انسيابي مستطيل الحواف يضفي حركة عمودية أنيقة ونوراً هادئاً للمداخل."
-        },
-        img: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 9,
-        name: { en: "Triptych Studio", ar: "تريبتيك ستوديو" },
-        category: { en: "Vanity", ar: "ثلاثية الطي" },
-        dimensions: "110 × 140 cm (Extended)",
-        frame: { en: "Milled Aerospace Aluminum", ar: "ألومنيوم فضاء مصقول بدقة" },
-        glass: { en: "HD Distortion-Free", ar: "زجاج عالي الدقة بدون تشويه" },
-        lighting: { en: "Precision Vanity Glow", ar: "إضاءة تجميل دقيقة" },
-        desc: { 
-          en: "Three-panel articulated vanity mirror engineered with silky, silent brass pivot hinges.",
-          ar: "مرآة زينة ثلاثية الألواح مزودة بمفاصل نحاسية ناعمة الحركة لتعدد زوايا الرؤية."
-        },
-        img: "https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 10,
-        name: { en: "Onyx Monolith", ar: "أونيكس مونوليث" },
-        category: { en: "Floor", ar: "مرآة ضخمة" },
-        dimensions: "240 × 120 cm",
-        frame: { en: "Smoked Blackened Titanium", ar: "تيتانيوم مدخن ومسود" },
-        glass: { en: "Dark Smoke Tinted Core", ar: "قلب زجاجي مدخن داكن" },
-        lighting: { en: "Integrated Bottom Wash", ar: "إضاءة أرضية مدمجة" },
-        desc: { 
-          en: "An imposing, gallery-scale statement piece creating unmatched depth in grand living halls.",
-          ar: "قطعة فنية هائلة بمقاييس المعارض تمنح عمقاً لا متناهياً لغرف المعيشة الفارهة."
-        },
-        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 11,
-        name: { en: "Vapour Floating", ar: "فابور المعلقة" },
-        category: { en: "Frameless", ar: "معلقة بلا إطار" },
-        dimensions: "100 × 100 cm",
-        frame: { en: "Concealed Standoff Mount", ar: "تثبيت خفي بدون إطار ظاهر" },
-        glass: { en: "Diamond Polished Edge", ar: "حواف مصقولة بقطع الماس" },
-        lighting: { en: "360° Perimeter Aura", ar: "هالة محيطية 360 درجة" },
-        desc: { 
-          en: "Suspends 40mm off the wall surface, casting a levitating halo of pure architectural light.",
-          ar: "تطفو على بعد 40 ملم من الجدار، مما يعطي إيحاءً بالتحليق مع هالة ضوئية نقية."
-        },
-        img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 12,
-        name: { en: "Brutalist Brass", ar: "بروتاليست براس" },
-        category: { en: "Sculptural", ar: "نحاسية هندسية" },
-        dimensions: "150 × 85 cm",
-        frame: { en: "Cast Heavyweight Brass", ar: "نحاس ثقيل مصبوب" },
-        glass: { en: "Low-Iron Premium", ar: "زجاج منخفض الحديد ممتاز" },
-        lighting: { en: "Passive Shadow Play", ar: "تفاعل مع الظلال المحيطة" },
-        desc: { 
-          en: "Deep-recessed chamfered reveal that transforms the mirror into a sculpted architectural portal.",
-          ar: "إطار غائر ببروز هندسي يحول المرآة إلى بوابة معمارية منحوتة في الجدار."
-        },
-        img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 13,
-        name: { en: "Crescent Duet", ar: "كريسنت ديو" },
-        category: { en: "Segmented", ar: "مزدوجة مقسمة" },
-        dimensions: "140 × 90 cm",
-        frame: { en: "Twin Split Bronze", ar: "برونز مزدوج منفصل" },
-        glass: { en: "Dual Contrast Reflector", ar: "عاكس زجاجي مزدوج التباين" },
-        lighting: { en: "Central Seam Luminescence", ar: "إضاءة من الخط الفاصل" },
-        desc: { 
-          en: "Two interconnected semicircular mirrors positioned with a dramatic vertical dividing gap.",
-          ar: "مرآتان نصف دائريتان متصلتان يفصل بينهما خط عمودي جذاب يشع بالضوء."
-        },
-        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 14,
-        name: { en: "Starlight Infinity", ar: "ستارلايت إنفينيتي" },
-        category: { en: "Backlit", ar: "إضاءة خافتة" },
-        dimensions: "115 × 75 cm",
-        frame: { en: "Satin Warm Nickel", ar: "نيكل دافئ ملمس ساتان" },
-        glass: { en: "Optical Crystal Grade", ar: "بلور بصري كريستالي نقي" },
-        lighting: { en: "Warm 2400K Glow", ar: "وهج دافئ 2400 كلفن" },
-        desc: { 
-          en: "Radiates warm golden light outward to generate warmth and gentle dimension across wall textures.",
-          ar: "تشع بضوء ذهبي دافئ ينساب على الجدران ليمنح المكان دفئاً وعمقاً ساحراً."
-        },
-        img: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 15,
-        name: { en: "Nordic Atelier", ar: "نورديك أتيليه" },
-        category: { en: "Rectangular", ar: "مستطيلة نورديك" },
-        dimensions: "190 × 75 cm",
-        frame: { en: "White Oiled Solid Ash & Steel", ar: "خشب دردار صلب مطعم بالفولاذ" },
-        glass: { en: "Ultra-Silver Reflective", ar: "طلاء فضي فائق النقاء" },
-        lighting: { en: "Ambient Top Sconce Compatible", ar: "متوافقة مع الإضاءة العلوية" },
-        desc: { 
-          en: "Scandinavian restraint married with crisp European craftsmanship for minimalist sanctuaries.",
-          ar: "بساطة اسكندنافية أصيلة ممتزجة مع براعة التصنيع الأوروبي للمنازل الحديثة."
-        },
-        img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 16,
-        name: { en: "Prism Polygon", ar: "بريزم متعدد الأضلاع" },
-        category: { en: "Geometric", ar: "هندسي متعدد الأوجه" },
-        dimensions: "110 × 110 cm",
-        frame: { en: "Faceted Champagne Steel", ar: "فولاذ شامبانيا متعدد الزوايا" },
-        glass: { en: "Multi-Facet Beveled Float", ar: "زجاج عائم بحواف مشطوفة الزوايا" },
-        lighting: { en: "Prismatic Light Refraction", ar: "انكسار ضوئي بلوري" },
-        desc: { 
-          en: "Octagonal faceted perimeter that breaks incoming natural light into radiant, soft patterns.",
-          ar: "إطار مثمن الأضلاع يكسر الضوء الطبيعي المتدفق إلى تشكيلات ضوئية بهية."
-        },
-        img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=900&auto=format&fit=crop"
-      },
-      {
-        id: 17,
-        name: { en: "Zenith Oversized", ar: "زينيث الفاخرة" },
-        category: { en: "Masterpiece", ar: "تحفة معمارية" },
-        dimensions: "260 × 140 cm",
-        frame: { en: "Seamless Architectural Bronze", ar: "برونز معماري سلس بدون لحام" },
-        glass: { en: "Museum Grade Diamond Pure", ar: "زجاج نقي بمواصفات المتاحف العالمية" },
-        lighting: { en: "Dual Indirect Ambient Flow", ar: "تدفق ضوئي محيطي غير مباشر" },
-        desc: { 
-          en: "The definitive flagship monument: an awe-inspiring expanse designed for double-height spaces.",
-          ar: "القطعة الرائدة الاستثنائية: اتساع بصري شاهق صُمم خصيصاً للصالات والمنازل ذات الأسقف العالية."
-        },
-        img: "https://images.unsplash.com/photo-160058515526-990dced4db0d?q=80&w=900&auto=format&fit=crop"
-      }
-    ];
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top" data-tone="hero" aria-label="Introduction">
+      <div class="hero__stage">
+        <video class="hero__video" id="heroVideo" muted loop playsinline autoplay preload="auto" disablepictureinpicture>
+          <source src="https://ik.imagekit.io/qwyda5souj/glass%20house/photos/gemini_generated_video_35f848ca.mp4" type="video/mp4">
+        </video>
+        <div class="hero__shade"></div>
+        <div class="hero__dim" id="heroDim"></div>
+        <div class="hero__logo" id="heroLogo"><div class="hero__mark"><img class="logo-img" src="https://ik.imagekit.io/qwyda5souj/glass%20house/photos/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="" decoding="async" fetchpriority="high"><p class="hero__name">Glass House</p></div></div>
+        <div class="hero__copy" id="heroCopy">
+          <h1 class="hero__title">
+            <span class="line"><span>Reflection,</span></span>
+            <span class="line"><span>refined.</span></span>
+          </h1>
+          <div class="hero__aside">
+            <p class="hero__sub">Contemporary mirrors designed for modern spaces.</p>
+            <a class="hero__cta" href="#collection">Explore Collection</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    /* ========================================================
-       I18N TRANSLATION MATRIX
-    ======================================================== */
-    const translations = {
-      en: {
-        brand: "GLASS HOUSE",
-        heroHeadline: "GLASS HOUSE <br><span>REFLECT YOUR STYLE.</span>",
-        heroSubtext: "Pure architectural glass, precision-honed profiles, and timeless reflections designed to sculpt natural light and transform spaces.",
-        exploreCta: "EXPLORE THE 17 DESIGNS",
-        scrollNotice: "SCROLL TO DISCOVER",
-        archiveEyebrow: "PERMANENT ARCHIVE",
-        archiveTitle: "The Mirror Collection",
-        editionCount: "17 EDITIONS",
-        inspectText: "INSPECT SPECIFICATION →",
-        specDimensions: "Dimensions",
-        specMaterial: "Frame Alloy",
-        specGlass: "Glass Clarity",
-        specIllumination: "Illumination",
-        toggleText: "العربية"
-      },
-      ar: {
-        brand: "بيت الزجاج",
-        heroHeadline: "بيت الزجاج <br><span>انعكاسٌ يُلهم أسلوبك.</span>",
-        heroSubtext: "مرايا معمارية فائقة النقاء، وحواف مصقولة ببراعة هندسية تُعيد صياغة الضوء وتمنح منزلك بعداً راقياً واستثنائياً.",
-        exploreCta: "استكشف الـ 17 تصميماً",
-        scrollNotice: "مرر لاكتشاف المجموعة",
-        archiveEyebrow: "المجموعة الحصرية الدائمة",
-        archiveTitle: "مجموعة المرايا المعمارية",
-        editionCount: "17 قطعة فنية",
-        inspectText: "تفاصيل القطعة ←",
-        specDimensions: "الأبعاد",
-        specMaterial: "سبيكة الإطار",
-        specGlass: "نقاء الزجاج",
-        specIllumination: "نمط الإضاءة",
-        toggleText: "English"
+    <!-- COLLECTION INTRO -->
+    <section class="intro" id="collection" data-tone="light" aria-labelledby="introTitle">
+      <div class="intro__inner">
+        <h2 class="intro__title" id="introTitle">The Collection</h2>
+        <div class="intro__rule" aria-hidden="true"></div>
+        <p class="intro__text" id="introText">A considered collection of mirrors designed to shape the atmosphere of modern spaces.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY (built by script from the product list) -->
+    <section class="gallery" id="gallery" data-tone="light" aria-label="Mirror collection">
+      <div class="gallery__inner" id="galleryInner"></div>
+      <noscript><p>Please enable JavaScript to view the collection.</p></noscript>
+    </section>
+
+    <!-- CRAFTSMANSHIP -->
+    <section class="craft" id="craft" data-tone="dark" aria-label="Craftsmanship">
+      <div class="craft__track" id="craftTrack">
+        <div class="craft__stage" id="craftStage">
+          <div class="craft__copy">
+            <div class="craft__item on">
+              <h2>Precision.</h2>
+              <p>Straight lines, true edges and proportions that feel resolved.</p>
+            </div>
+            <div class="craft__item">
+              <h2>Material.</h2>
+              <p>Glass and finishes chosen for clarity, depth and a faithful reflection.</p>
+            </div>
+            <div class="craft__item">
+              <h2>Detail.</h2>
+              <p>Modern manufacturing, with care given to every edge and surface.</p>
+            </div>
+            <div class="craft__bar" aria-hidden="true"><i id="craftBar"></i></div>
+          </div>
+          <div class="craft__media" id="craftMedia"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND STATEMENT -->
+    <section class="statement" id="statement" data-tone="statement" aria-label="Brand statement">
+      <div class="statement__track" id="statementTrack">
+        <div class="statement__stage">
+          <div class="layer layer--light">
+            <h2 class="statement__big">More than<br>reflection.</h2>
+            <p class="statement__small">Designed to become part of the space.</p>
+          </div>
+          <div class="layer layer--dark" id="statementDark" aria-hidden="true">
+            <p class="statement__big">More than<br>reflection.</p>
+            <p class="statement__small">Designed to become part of the space.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" data-tone="dark" aria-labelledby="contactTitle">
+      <div class="contact__inner">
+        <h2 class="contact__title" id="contactTitle">Find your<br>reflection.</h2>
+        <p class="contact__text">Speak with us about the collection and how it could shape your space.</p>
+        <a class="cta" id="contactCta" href="https://wa.me/201150429236" target="_blank" rel="noopener">Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" data-tone="dark">
+    <div class="foot__inner">
+      <a class="foot__brand" href="#top" aria-label="Glass House, back to top">
+        <img class="logo-img" src="https://ik.imagekit.io/qwyda5souj/glass%20house/photos/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="" loading="lazy" decoding="async">
+        <span class="brand__name">Glass House</span>
+      </a>
+      <nav class="foot__nav" aria-label="Footer">
+        <a href="#collection">Collection</a>
+        <a href="#craft">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="foot__wa" href="https://wa.me/201150429236" target="_blank" rel="noopener">WhatsApp: +20 11 50429236</a>
+    </div>
+  </footer>
+</div>
+
+<!-- PRODUCT VIEWER -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Mirror viewer">
+  <div class="viewer__bg"></div>
+  <div class="viewer__stage" id="viewerStage">
+    <img class="viewer__img" id="viewerImg" alt="" decoding="async">
+  </div>
+  <div class="viewer__ui">
+    <p class="viewer__count" id="viewerCount" aria-hidden="true"></p>
+    <button class="viewer__close" id="viewerClose" type="button" aria-label="Close viewer"><span>Close</span></button>
+    <button class="viewer__nav viewer__nav--prev" id="viewerPrev" type="button" aria-label="Previous mirror">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M15 4 7 12l8 8"/></svg>
+    </button>
+    <button class="viewer__nav viewer__nav--next" id="viewerNext" type="button" aria-label="Next mirror">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg>
+    </button>
+    <div class="viewer__info" aria-live="polite">
+      <p class="viewer__name" id="viewerName"></p>
+      <p class="viewer__line">Contemporary Collection</p>
+    </div>
+  </div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"><i><span>View</span></i></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ======================================================================
+     CONFIG — the only things you should need to edit
+     ====================================================================== */
+  const CONFIG = {
+    // Fill ONE of these to activate the "Contact Us" button.
+    // whatsapp: digits only with country code (Egypt +20 → 20…)
+    contact: { whatsapp: '201150429236', email: '', phone: '' },
+    // 'auto' measures the logo file and adapts it to each background.
+    // Force a treatment if needed: 'plain' (untouched), 'a', 'b', 'c', 'd'.
+    logoMode: 'auto',
+    // ImageKit on-the-fly resizing (adds ?tr=w-…). Off = load the exact original URLs.
+    resize: false
+  };
+
+  const IK = 'https://ik.imagekit.io/qwyda5souj/glass%20house/photos/';
+  const P = 'WhatsApp%20Image%202026-09-20%20at%202.03.';
+  const prod = (part, v) => `${IK}${P}${part}.jpeg?updatedAt=${v}`;
+
+  // The 17 supplied product photographs, in the supplied order.
+  const PRODUCTS = [
+    prod('39%20AM%20(7)', '1789859321520'),
+    prod('30%20AM',           '1789859324453'),
+    prod('39%20AM%20(8)', '1789859328262'),
+    prod('34%20AM',           '1789859330845'),
+    prod('39%20AM%20(6)', '1789859331765'),
+    prod('35%20AM',           '1789859332067'),
+    prod('38%20AM%20(1)', '1789859333341'),
+    prod('29%20AM',           '1789859333184'),
+    prod('39%20AM',           '1789859333772'),
+    prod('39%20AM%20(5)', '1789859334478'),
+    prod('38%20AM%20(3)', '1789859334820'),
+    prod('38%20AM%20(2)', '1789859336435'),
+    prod('38%20AM',           '1789859336926'),
+    prod('39%20AM%20(2)', '1789859337897'),
+    prod('39%20AM%20(1)', '1789859337828'),
+    prod('39%20AM%20(4)', '1789859337837'),
+    prod('39%20AM%20(3)', '1789859338268')
+  ];
+
+  // Editorial composition. s = spread, c = grid columns, r = aspect ratio,
+  // mt = vertical offset, as = alignment, sp = parallax depth (0–1).
+  const LAYOUT = [
+    { s: 1, c: '4 / span 6',  r: '4 / 5',   sp: 1 },
+    { s: 2, c: '1 / span 4',  r: '3 / 4',   sp: .8 },
+    { s: 2, c: '6 / span 3',  r: '3 / 4',   sp: .6, mt: '9vw' },
+    { s: 2, c: '10 / span 3', r: '3 / 4',   sp: .9, mt: '3vw' },
+    { s: 3, c: '1 / span 8',  r: '16 / 10', sp: 1 },
+    { s: 3, c: '10 / span 3', r: '3 / 4',   sp: .7, as: 'end' },
+    { s: 4, c: '2 / span 3',  r: '3 / 4',   sp: .7 },
+    { s: 4, c: '6 / span 4',  r: '4 / 5',   sp: .9, mt: '6vw' },
+    { s: 4, c: '11 / span 2', r: '3 / 4',   sp: .6, mt: '16vw' },
+    { s: 5, c: '5 / span 8',  r: '4 / 3',   sp: 1 },
+    { s: 5, c: '1 / span 3',  r: '3 / 4',   sp: .7, mt: '8vw' },
+    { s: 6, c: '1 / span 5',  r: '4 / 5',   sp: .9 },
+    { s: 6, c: '7 / span 6',  r: '5 / 4',   sp: 1,  mt: '6vw' },
+    { s: 8, c: '1 / span 3',  r: '3 / 4',   sp: .7 },
+    { s: 8, c: '4 / span 3',  r: '3 / 4',   sp: .9, mt: '4vw' },
+    { s: 8, c: '7 / span 3',  r: '3 / 4',   sp: .6, mt: '8vw' },
+    { s: 8, c: '10 / span 3', r: '3 / 4',   sp: .8, mt: '12vw' }
+  ];
+  const DRIFT_SPREAD = 8;
+  const MOBILE_FULL = new Set([0, 3, 4, 9, 12, 15, 16]); // full-width pieces on small screens
+  const CRAFT_PICKS = [3, 8, 14];                  // photographs shown in the pinned craft scene
+
+  /* ======================================================================
+     Helpers
+     ====================================================================== */
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  const desktopMQ = matchMedia('(min-width: 1024px)');
+  const fineMQ = matchMedia('(hover: hover) and (pointer: fine)');
+  const reduced = () => reduceMQ.matches;
+  const pad = n => String(n).padStart(2, '0');
+  const nameOf = i => `Mirror ${pad(i + 1)}`;
+  const nextFrame = () => new Promise(r => requestAnimationFrame(() => r()));
+
+  // ImageKit resizes on the fly; if it ever refuses, fall back to the original file.
+  const ik = (url, w, q = 78) => (CONFIG.resize ? `${url}&tr=w-${w},q-${q}` : url);
+  const srcset = (url, widths = [480, 800, 1200, 1600]) => !CONFIG.resize ? '' : widths.map(w => `${ik(url, w)} ${w}w`).join(', ');
+  const armFallback = (img, original) => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      img.removeAttribute('srcset');
+      img.src = original;
+    });
+  };
+  const loaded = (img, ms = 4000) => new Promise(resolve => {
+    if (img.complete && img.naturalWidth) return resolve();
+    const done = () => { img.removeEventListener('load', done); img.removeEventListener('error', done); resolve(); };
+    img.addEventListener('load', done);
+    img.addEventListener('error', done);
+    setTimeout(done, ms);
+  });
+
+  /* ======================================================================
+     Engine — one scroll listener, one rAF, cached geometry (no layout reads
+     while scrolling)
+     ====================================================================== */
+  const Engine = {
+    mods: [], ticking: false, y: 0, vh: 0, vw: 0,
+    add(m) { this.mods.push(m); return m; },
+    measure() {
+      this.vh = document.documentElement.clientHeight;
+      this.vw = document.documentElement.clientWidth;
+      this.mods.forEach(m => m.measure && m.measure(this));
+    },
+    req() {
+      if (this.ticking) return;
+      this.ticking = true;
+      requestAnimationFrame(() => {
+        this.ticking = false;
+        this.y = window.scrollY;
+        this.mods.forEach(m => m.update && m.update(this.y, this.vh, this.vw));
+      });
+    },
+    init() {
+      addEventListener('scroll', () => this.req(), { passive: true });
+      let t;
+      addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { this.measure(); this.req(); }, 140); });
+      addEventListener('load', () => { this.measure(); this.req(); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { this.measure(); this.req(); });
+      this.measure();
+      this.req();
+    }
+  };
+  const absTop = el => el.getBoundingClientRect().top + window.scrollY;
+
+  /* ======================================================================
+     Hero
+     ====================================================================== */
+  const Hero = {
+    init() {
+      this.el = $('#top'); this.video = $('#heroVideo'); this.copy = $('#heroCopy'); this.dim = $('#heroDim'); this.logo = $('#heroLogo');
+      const v = this.video;
+      const saveData = navigator.connection && navigator.connection.saveData;
+      if (innerWidth < 768) v.preload = 'metadata';
+      if (reduced() || saveData) {
+        v.removeAttribute('autoplay'); v.pause();
+      } else {
+        const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+        play();
+        new IntersectionObserver(([e]) => { e.isIntersecting ? play() : v.pause(); }, { threshold: 0 })
+          .observe($('.hero__stage'));
       }
+      return this;
+    },
+    measure() { this.top = absTop(this.el); this.h = this.el.offsetHeight; this.p = -1; },
+    update(y, vh) {
+      const p = clamp((y - this.top) / Math.max(1, this.h - vh));
+      if (p === this.p) return;
+      this.p = p;
+      this.copy.style.opacity = (1 - clamp(p * 1.7)).toFixed(3);
+      this.dim.style.opacity = (p * .5).toFixed(3);
+      this.logo.style.opacity = (1 - clamp(p * 1.5)).toFixed(3);
+      if (!reduced()) {
+        this.video.style.transform = `scale(${(1 + p * .1).toFixed(4)})`;
+        this.copy.style.transform = `translate3d(0, ${(-p * 48).toFixed(1)}px, 0)`;
+        this.logo.style.transform = `translate3d(0, ${(-p * 60).toFixed(1)}px, 0)`;
+      }
+    }
+  };
+
+  /* ======================================================================
+     Intro — the title arrives letter by letter as you scroll
+     ====================================================================== */
+  const Intro = {
+    init() {
+      this.title = $('#introTitle'); this.text = $('#introText');
+      const label = this.title.textContent.trim();
+      this.title.setAttribute('aria-label', label);
+      this.title.textContent = '';
+      this.chars = [];
+      label.split(' ').forEach(word => {
+        const w = document.createElement('span');
+        w.className = 'word'; w.setAttribute('aria-hidden', 'true');
+        for (const ch of word) {
+          const c = document.createElement('span');
+          c.className = 'ch'; c.textContent = ch; w.appendChild(c); this.chars.push(c);
+        }
+        this.title.appendChild(w);
+      });
+      return this;
+    },
+    measure() { this.top = absTop(this.title); this.p = -1; },
+    update(y, vh) {
+      const p = reduced() ? 1 : clamp((vh * .88 - (this.top - y)) / (vh * .5));
+      if (p === this.p) return;
+      this.p = p;
+      const n = this.chars.length;
+      this.chars.forEach((c, i) => { c.style.opacity = (.08 + .92 * clamp(p * (n + 4) - i)).toFixed(3); });
+      this.text.style.opacity = clamp((p - .65) / .35).toFixed(3);
+    }
+  };
+
+  /* ======================================================================
+     Gallery
+     ====================================================================== */
+  const Gallery = {
+    pieces: [],
+    init() {
+      const root = $('#galleryInner');
+      const groups = new Map();
+      let run = 0;
+      LAYOUT.forEach((l, i) => {
+        const full = MOBILE_FULL.has(i);
+        run = full ? 0 : run + 1;
+        const span = +l.c.match(/span (\d+)/)[1];
+        const url = PRODUCTS[i];
+        const name = nameOf(i);
+        const sizes = `(min-width: 1024px) ${Math.ceil(span / 12 * 92)}vw, ${full ? 100 : 50}vw`;
+        const cls = `piece${full ? ' is-full' : ''}${!full && run % 2 === 0 ? ' is-alt' : ''}`;
+        const html = `
+          <li class="${cls}" style="--c:${l.c};--r:${l.r};--mt:${l.mt || '0px'};--as:${l.as || 'start'}" data-index="${i}" data-speed="${l.sp}">
+            <button type="button" class="piece__btn" aria-label="View ${name}">
+              <span class="frame">
+                <span class="shift"><img src="${ik(url, 800)}" ${CONFIG.resize ? `srcset="${srcset(url)}" sizes="${sizes}"` : ''} alt="${name}, Contemporary Collection" loading="lazy" decoding="async"></span>
+                <span class="meta"><span class="meta__name">${name}</span><span class="meta__line">Contemporary Collection</span></span>
+              </span>
+            </button>
+          </li>`;
+        if (!groups.has(l.s)) groups.set(l.s, []);
+        groups.get(l.s).push(html);
+      });
+      root.innerHTML = Array.from(groups.entries())
+        .map(([s, items]) => `<ul class="spread${s === DRIFT_SPREAD ? ' spread--drift' : ''}" role="list">${items.join('')}</ul>`)
+        .join('');
+
+      this.pieces = $$('.piece', root).map((el, i) => {
+        const img = $('img', el);
+        armFallback(img, PRODUCTS[i]);
+        return { el, i, img, frame: $('.frame', el), shift: $('.shift', el), speed: +el.dataset.speed, top: 0, h: 0, last: '' };
+      });
+      this.drift = $('.spread--drift', root);
+
+      root.addEventListener('click', e => {
+        const btn = e.target.closest('.piece__btn');
+        if (btn) Viewer.open(+btn.closest('.piece').dataset.index);
+      });
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
+      this.pieces.forEach(p => io.observe(p.el));
+      return this;
+    },
+    measure(eng) {
+      this.pieces.forEach(p => { const r = p.frame.getBoundingClientRect(); p.top = r.top + window.scrollY; p.h = r.height; p.last = ''; });
+      if (this.drift) { const r = this.drift.getBoundingClientRect(); this.driftTop = r.top + window.scrollY; this.driftH = r.height; }
+    },
+    update(y, vh, vw) {
+      const motion = !reduced();
+      for (const p of this.pieces) {
+        const c = p.top + p.h / 2 - y;
+        if (c < -p.h || c > vh + p.h) continue;
+        const t = clamp((c - vh / 2) / (vh / 2 + p.h / 2), -1, 1);
+        const ty = motion ? (-t * .065 * p.h * p.speed).toFixed(1) : '0';
+        if (ty !== p.last) { p.shift.style.transform = `translate3d(0, ${ty}px, 0)`; p.last = ty; }
+      }
+      if (this.drift) {
+        if (motion && desktopMQ.matches) {
+          const q = clamp((y + vh - this.driftTop) / (vh + this.driftH));
+          this.drift.style.transform = `translate3d(${((.5 - q) * 2 * vw * .04).toFixed(1)}px, 0, 0)`;
+        } else this.drift.style.transform = '';
+      }
+    }
+  };
+
+  /* ======================================================================
+     Craftsmanship — pinned scene, three statements
+     ====================================================================== */
+  const Craft = {
+    init() {
+      this.track = $('#craftTrack'); this.stage = $('#craftStage'); this.bar = $('#craftBar');
+      this.items = $$('.craft__item', this.stage);
+      const media = $('#craftMedia');
+      this.imgs = CRAFT_PICKS.map((k, n) => {
+        const img = document.createElement('img');
+        img.src = ik(PRODUCTS[k], 1000);
+        if (CONFIG.resize) { img.srcset = srcset(PRODUCTS[k], [600, 1000, 1400]); img.sizes = '(min-width: 1024px) 42vw, 80vw'; }
+        img.alt = `${nameOf(k)}, Contemporary Collection`;
+        img.loading = 'lazy'; img.decoding = 'async';
+        if (n === 0) img.classList.add('on');
+        armFallback(img, PRODUCTS[k]);
+        media.appendChild(img);
+        return img;
+      });
+      this.idx = 0;
+      return this;
+    },
+    measure() { this.top = absTop(this.track); this.h = this.track.offsetHeight; this.p = -1; },
+    update(y, vh) {
+      const p = clamp((y - this.top) / Math.max(1, this.h - vh));
+      if (p === this.p) return;
+      this.p = p;
+      this.bar.style.setProperty('--p', p.toFixed(4));
+      const idx = Math.min(this.items.length - 1, Math.floor(p * this.items.length));
+      if (idx !== this.idx) {
+        this.idx = idx;
+        this.items.forEach((el, i) => el.classList.toggle('on', i === idx));
+        this.imgs.forEach((el, i) => el.classList.toggle('on', i === idx));
+      }
+    }
+  };
+
+  /* ======================================================================
+     Statement — a black edge rises through the type
+     ====================================================================== */
+  const Statement = {
+    p: 0,
+    init() { this.el = $('#statement'); this.track = $('#statementTrack'); this.dark = $('#statementDark'); return this; },
+    measure() { this.top = absTop(this.track); this.h = this.track.offsetHeight; this.p = -1; },
+    update(y, vh) {
+      const raw = clamp((y - this.top) / Math.max(1, this.h - vh));
+      const p = reduced() ? 1 : clamp((raw - .1) / .75);
+      if (p === this.p) return;
+      this.p = p;
+      this.dark.style.clipPath = `inset(${((1 - p) * 100).toFixed(2)}% 0 0 0)`;
+    },
+    theme() { return this.p >= .96 ? 'dark' : 'light'; }
+  };
+
+  /* ======================================================================
+     Header — theme follows whatever section sits beneath it
+     ====================================================================== */
+  const Header = {
+    theme: '',
+    init() { this.bar = $('.bar'); this.sections = []; return this; },
+    measure() {
+      this.h = this.bar.offsetHeight;
+      this.sections = $$('[data-tone]').map(el => {
+        const r = el.getBoundingClientRect();
+        return { tone: el.dataset.tone, top: r.top + window.scrollY, bottom: r.bottom + window.scrollY };
+      });
+    },
+    update(y) {
+      const line = y + this.h / 2;
+      let th = 'light';
+      for (const s of this.sections) {
+        if (line >= s.top && line < s.bottom) { th = s.tone === 'statement' ? Statement.theme() : s.tone; break; }
+      }
+      if (th !== this.theme) { this.theme = th; document.body.dataset.nav = th; }
+    }
+  };
+
+  /* ======================================================================
+     Viewer — in-page gallery with a shared-element transition
+     ====================================================================== */
+  const Viewer = {
+    isOpen: false, busy: false, i: 0, lastFocus: null, ghostEase: 'cubic-bezier(.22,.7,.12,1)',
+    init() {
+      this.root = $('#viewer'); this.stage = $('#viewerStage'); this.img = $('#viewerImg');
+      this.nameEl = $('#viewerName'); this.countEl = $('#viewerCount'); this.page = $('#page');
+      this.closeBtn = $('#viewerClose'); this.prevBtn = $('#viewerPrev'); this.nextBtn = $('#viewerNext');
+
+      this.closeBtn.addEventListener('click', () => this.close());
+      this.prevBtn.addEventListener('click', () => this.go(-1));
+      this.nextBtn.addEventListener('click', () => this.go(1));
+      this.stage.addEventListener('click', e => { if (e.target === this.stage) this.close(); });
+      this.img.addEventListener('error', () => {
+        if (this.img.dataset.fallback === String(this.i)) return;
+        this.img.dataset.fallback = String(this.i);
+        this.img.src = PRODUCTS[this.i];
+      });
+
+      document.addEventListener('keydown', e => {
+        if (!this.isOpen) return;
+        if (e.key === 'Escape') { e.preventDefault(); this.close(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); this.go(-1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); this.go(1); }
+        else if (e.key === 'Tab') this.trap(e);
+      });
+
+      let x0 = null;
+      this.stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
+      this.stage.addEventListener('pointerup', e => {
+        if (x0 === null) return;
+        const dx = e.clientX - x0; x0 = null;
+        if (Math.abs(dx) > 50) this.go(dx < 0 ? 1 : -1);
+      });
+      this.stage.addEventListener('pointercancel', () => { x0 = null; });
+      return this;
+    },
+    hiSrc(i) { return ik(PRODUCTS[i], innerWidth > 1200 ? 2000 : 1400, 82); },
+    setMeta(i) {
+      this.nameEl.textContent = nameOf(i);
+      this.countEl.textContent = `${pad(i + 1)} / ${pad(PRODUCTS.length)}`;
+      this.img.alt = `${nameOf(i)}, Contemporary Collection`;
+    },
+    fit(ratio) {
+      const r = this.stage.getBoundingClientRect();
+      let w = r.width, h = w / ratio;
+      if (h > r.height) { h = r.height; w = h * ratio; }
+      return { left: r.left + (r.width - w) / 2, top: r.top + (r.height - h) / 2, width: w, height: h };
+    },
+    px(r) { return { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' }; },
+    clipFor(imgRect, frameRect) {
+      return `inset(${Math.max(0, frameRect.top - imgRect.top)}px ${Math.max(0, imgRect.right - frameRect.right)}px ${Math.max(0, imgRect.bottom - frameRect.bottom)}px ${Math.max(0, frameRect.left - imgRect.left)}px)`;
+    },
+    trap(e) {
+      const f = [this.closeBtn, this.prevBtn, this.nextBtn];
+      const at = f.indexOf(document.activeElement);
+      e.preventDefault();
+      const n = e.shiftKey ? (at <= 0 ? f.length - 1 : at - 1) : (at === f.length - 1 ? 0 : at + 1);
+      f[n].focus();
+    },
+    preload(i) { const n = PRODUCTS.length; [i - 1, i + 1].forEach(k => { const im = new Image(); im.src = this.hiSrc((k + n) % n); }); },
+
+    async open(i) {
+      if (this.isOpen || this.busy) return;
+      this.busy = true; this.isOpen = true; this.i = i;
+      this.lastFocus = document.activeElement;
+      const item = Gallery.pieces[i];
+      item.el.classList.add('in');
+      this.setMeta(i);
+
+      const from = item.img.getBoundingClientRect();
+      const frame = item.frame.getBoundingClientRect();
+      document.documentElement.classList.add('is-locked');
+      this.page.inert = true;
+      this.img.style.opacity = '0';
+      this.img.src = this.hiSrc(i);
+      this.root.classList.add('is-on');
+      await nextFrame();
+      this.root.classList.add('is-open');
+
+      const ratio = item.img.naturalWidth && item.img.naturalHeight ? item.img.naturalWidth / item.img.naturalHeight : 4 / 5;
+      const to = this.fit(ratio);
+
+      if (!reduced() && item.img.complete && item.img.naturalWidth) {
+        const g = new Image();
+        g.className = 'ghost'; g.alt = ''; g.src = item.img.currentSrc || item.img.src;
+        Object.assign(g.style, this.px(from), { clipPath: this.clipFor(from, frame) });
+        document.body.appendChild(g);
+        item.el.classList.add('is-lifted');
+        const a = g.animate(
+          [{ ...this.px(from), clipPath: this.clipFor(from, frame) }, { ...this.px(to), clipPath: 'inset(0px 0px 0px 0px)' }],
+          { duration: 780, easing: this.ghostEase, fill: 'forwards' }
+        );
+        await a.finished.catch(() => {});
+        await loaded(this.img, 3000);
+        this.img.style.opacity = '1';
+        g.remove();
+      } else {
+        await loaded(this.img, 3000);
+        this.img.style.opacity = '1';
+      }
+      this.preload(i);
+      this.busy = false;
+      this.closeBtn.focus({ preventScroll: true });
+    },
+
+    async close() {
+      if (!this.isOpen || this.busy) return;
+      this.busy = true;
+      const item = Gallery.pieces[this.i];
+      const ratio = this.img.naturalWidth && this.img.naturalHeight ? this.img.naturalWidth / this.img.naturalHeight : 4 / 5;
+      const fromRect = this.fit(ratio);
+
+      let fr = item.frame.getBoundingClientRect();
+      if (fr.bottom < 40 || fr.top > innerHeight - 40) {
+        item.el.scrollIntoView({ block: 'center', behavior: 'instant' });
+        await nextFrame(); await nextFrame();
+      }
+      const toImg = item.img.getBoundingClientRect();
+      fr = item.frame.getBoundingClientRect();
+      const g = new Image();
+      g.className = 'ghost'; g.alt = ''; g.src = this.img.currentSrc || this.img.src;
+      Object.assign(g.style, this.px(fromRect), { clipPath: 'inset(0px 0px 0px 0px)' });
+
+      this.root.classList.remove('is-open');
+      if (!reduced()) {
+        item.el.classList.add('is-lifted');
+        document.body.appendChild(g);
+        this.img.style.opacity = '0';
+        const a = g.animate(
+          [{ ...this.px(fromRect), clipPath: 'inset(0px 0px 0px 0px)' }, { ...this.px(toImg), clipPath: this.clipFor(toImg, fr) }],
+          { duration: 700, easing: this.ghostEase, fill: 'forwards' }
+        );
+        await a.finished.catch(() => {});
+      } else {
+        await new Promise(r => setTimeout(r, 120));
+      }
+      item.el.classList.remove('is-lifted');
+      g.remove();
+      this.root.classList.remove('is-on');
+      document.documentElement.classList.remove('is-locked');
+      this.page.inert = false;
+      this.isOpen = false; this.busy = false;
+      if (this.lastFocus && this.lastFocus.focus) this.lastFocus.focus({ preventScroll: true });
+      Engine.req();
+    },
+
+    async go(dir) {
+      if (!this.isOpen || this.busy) return;
+      this.busy = true;
+      const n = PRODUCTS.length;
+      const next = (this.i + dir + n) % n;
+      Gallery.pieces[next].el.classList.add('in');
+      const out = this.img.animate(
+        [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translate3d(${-28 * dir}px,0,0)` }],
+        { duration: reduced() ? 1 : 240, easing: 'ease-in', fill: 'forwards' }
+      );
+      await out.finished.catch(() => {});
+      this.i = next;
+      this.setMeta(next);
+      this.img.src = this.hiSrc(next);
+      await loaded(this.img, 4000);
+      const inn = this.img.animate(
+        [{ opacity: 0, transform: `translate3d(${28 * dir}px,0,0)` }, { opacity: 1, transform: 'none' }],
+        { duration: reduced() ? 1 : 460, easing: this.ghostEase, fill: 'forwards' }
+      );
+      await inn.finished.catch(() => {});
+      this.img.style.opacity = '1';
+      out.cancel(); inn.cancel();
+      this.preload(next);
+      this.busy = false;
+    }
+  };
+
+  /* ======================================================================
+     Cursor + magnetic CTA (fine pointers only)
+     ====================================================================== */
+  const Cursor = {
+    init() {
+      if (!fineMQ.matches) return;
+      const el = $('#cursor');
+      let x = 0, y = 0, cx = 0, cy = 0, raf = 0;
+      const loop = () => {
+        cx += (x - cx) * .22; cy += (y - cy) * .22;
+        el.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+        raf = (Math.abs(x - cx) + Math.abs(y - cy) > .1) ? requestAnimationFrame(loop) : 0;
+      };
+      addEventListener('pointermove', e => {
+        x = e.clientX; y = e.clientY;
+        if (!el.classList.contains('is-active')) { cx = x; cy = y; el.classList.add('is-active'); }
+        if (!raf) raf = requestAnimationFrame(loop);
+      }, { passive: true });
+      document.addEventListener('pointerover', e => {
+        el.classList.toggle('is-view', !!e.target.closest('.piece__btn') && !Viewer.isOpen);
+      });
+      document.documentElement.addEventListener('mouseleave', () => el.classList.remove('is-active'));
+    }
+  };
+
+  const Magnetic = {
+    init() {
+      const el = $('#contactCta');
+      if (!el || !fineMQ.matches || reduced()) return;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = clamp((e.clientX - (r.left + r.width / 2)) * .16, -8, 8);
+        const dy = clamp((e.clientY - (r.top + r.height / 2)) * .22, -6, 6);
+        el.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    }
+  };
+
+  /* ======================================================================
+     Contact wiring — never invents details; stays inert until configured
+     ====================================================================== */
+  const wireContact = () => {
+    const a = $('#contactCta');
+    const { whatsapp, email, phone } = CONFIG.contact;
+    if (whatsapp) { a.href = `https://wa.me/${whatsapp.replace(/\D/g, '')}`; a.target = '_blank'; a.rel = 'noopener'; }
+    else if (email) a.href = `mailto:${email}`;
+    else if (phone) a.href = `tel:${phone.replace(/\s/g, '')}`;
+  };
+
+
+  /* ======================================================================
+     Logo — measured once, then adapted to dark / light backgrounds
+     ====================================================================== */
+  const LOGO_URL = 'https://ik.imagekit.io/qwyda5souj/glass%20house/photos/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png';
+  const analyzeLogo = src => new Promise(resolve => {
+    const im = new Image();
+    im.crossOrigin = 'anonymous';
+    im.onerror = () => resolve('plain');
+    im.onload = () => {
+      try {
+        const w = 96, h = Math.max(1, Math.round(w * im.naturalHeight / im.naturalWidth));
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        const x = c.getContext('2d', { willReadFrequently: true });
+        x.drawImage(im, 0, 0, w, h);
+        const d = x.getImageData(0, 0, w, h).data;
+        const lum = o => (.2126 * d[o] + .7152 * d[o + 1] + .0722 * d[o + 2]) / 255;
+        let ea = 0, el = 0, en = 0, fl = 0, fn = 0;
+        for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++) {
+          const o = (yy * w + xx) * 4, edge = xx === 0 || yy === 0 || xx === w - 1 || yy === h - 1;
+          if (edge) { ea += d[o + 3]; en++; if (d[o + 3] > 0) el += lum(o); }
+          if (d[o + 3] > 128) { fl += lum(o); fn++; }
+        }
+        const edgeAlpha = ea / en;
+        if (edgeAlpha < 40) return resolve(fn ? (fl / fn < .5 ? 'a' : 'b') : 'plain');
+        resolve(el / en > .5 ? 'c' : 'd');
+      } catch (e) { resolve('plain'); }
     };
+    im.src = src;
+  });
+  const initLogo = () => {
+    const root = document.documentElement;
+    if (CONFIG.logoMode !== 'auto') { root.dataset.l = CONFIG.logoMode; return; }
+    let done = false;
+    const set = m => { if (!done) { done = true; root.dataset.l = m; } };
+    analyzeLogo(LOGO_URL).then(set);
+    setTimeout(() => set('plain'), 2000);
+  };
 
-    let currentLang = 'en';
+  /* ======================================================================
+     Boot
+     ====================================================================== */
+  initLogo();
+  wireContact();
 
-    /* ========================================================
-       RENDER THE 17 MIRRORS (WHITE THEME)
-    ======================================================== */
-    const mirrorsGrid = document.getElementById('mirrorsGrid');
+  Engine.add(Hero.init());
+  Engine.add(Intro.init());
+  Engine.add(Gallery.init());
+  Engine.add(Craft.init());
+  Engine.add(Statement.init());
+  Engine.add(Header.init());
+  Viewer.init();
+  Cursor.init();
+  Magnetic.init();
+  Engine.init();
 
-    function renderMirrors() {
-      mirrorsGrid.innerHTML = '';
-      mirrors.forEach((mirror, idx) => {
-        const card = document.createElement('article');
-        card.className = 'mirror-card';
-        card.setAttribute('data-id', mirror.id);
-        card.tabIndex = 0;
-
-        card.innerHTML = `
-          <div class="mirror-image-container">
-            <span class="mirror-idx">${String(idx + 1).padStart(2, '0')} / 17</span>
-            <span class="mirror-badge-type">${mirror.category[currentLang]}</span>
-            <img class="mirror-img" src="${mirror.img}" alt="${mirror.name[currentLang]}" loading="lazy">
-            <div class="mirror-glass-sheen"></div>
-          </div>
-          <div class="mirror-details">
-            <div>
-              <h3 class="mirror-name">${mirror.name[currentLang]}</h3>
-              <p class="mirror-dim">${mirror.dimensions}</p>
-            </div>
-            <div class="mirror-footer-meta">
-              <span class="mirror-action-text">${translations[currentLang].inspectText}</span>
-            </div>
-          </div>
-        `;
-
-        card.addEventListener('click', () => openModal(mirror));
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') openModal(mirror);
-        });
-
-        mirrorsGrid.appendChild(card);
-      });
-
-      setupScrollObserver();
-    }
-
-    /* ========================================================
-       SCROLL ANIMATIONS (INTERSECTION OBSERVER)
-    ======================================================== */
-    function setupScrollObserver() {
-      const cards = document.querySelectorAll('.mirror-card');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(cards).indexOf(entry.target);
-            const delay = (index % 4) * 85;
-            setTimeout(() => {
-              entry.target.classList.add('is-visible');
-            }, delay);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      cards.forEach(card => observer.observe(card));
-    }
-
-    /* ========================================================
-       NAVBAR HIDE-ON-SCROLL
-    ======================================================== */
-    const topBar = document.querySelector('.top-bar');
-    let lastScrollY = window.scrollY;
-    let scrollTicking = false;
-
-    function updateNavbarOnScroll() {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 20 || currentScrollY < lastScrollY) {
-        topBar.classList.remove('nav-hidden');
-      } else if (currentScrollY > lastScrollY) {
-        topBar.classList.add('nav-hidden');
-      }
-
-      lastScrollY = currentScrollY;
-      scrollTicking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-      if (!scrollTicking) {
-        window.requestAnimationFrame(updateNavbarOnScroll);
-        scrollTicking = true;
-      }
-    }, { passive: true });
-
-    /* ========================================================
-       MODAL INSPECTION INTERACTION
-    ======================================================== */
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const modalImg = document.getElementById('modalImg');
-    const modalCategory = document.getElementById('modalCategory');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalDim = document.getElementById('modalDim');
-    const modalFrame = document.getElementById('modalFrame');
-    const modalGlass = document.getElementById('modalGlass');
-    const modalLighting = document.getElementById('modalLighting');
-
-    function openModal(mirror) {
-      modalImg.src = mirror.img;
-      modalImg.alt = mirror.name[currentLang];
-      modalCategory.textContent = mirror.category[currentLang];
-      modalTitle.textContent = mirror.name[currentLang];
-      modalDescription.textContent = mirror.desc[currentLang];
-      modalDim.textContent = mirror.dimensions;
-      modalFrame.textContent = mirror.frame[currentLang];
-      modalGlass.textContent = mirror.glass[currentLang];
-      modalLighting.textContent = mirror.lighting[currentLang];
-
-      modalBackdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      modalBackdrop.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    modalCloseBtn.addEventListener('click', closeModal);
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) closeModal();
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
-        closeModal();
-      }
-    });
-
-    /* ========================================================
-       LANGUAGE TOGGLE (ENGLISH <-> ARABIC)
-    ======================================================== */
-    const langToggle = document.getElementById('langToggle');
-    const langLabel = document.getElementById('langLabel');
-
-    function applyLanguage(lang) {
-      currentLang = lang;
-      document.documentElement.setAttribute('lang', lang);
-      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
-        }
-      });
-
-      langLabel.textContent = translations[lang].toggleText;
-      renderMirrors();
-    }
-
-    langToggle.addEventListener('click', () => {
-      const nextLang = currentLang === 'en' ? 'ar' : 'en';
-      applyLanguage(nextLang);
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Initial render
-    renderMirrors();
-  </script>
+  const ready = () => document.documentElement.classList.add('is-ready');
+  const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  Promise.race([fontsReady, new Promise(r => setTimeout(r, 1200))]).then(() => requestAnimationFrame(ready));
+})();
+</script>
 </body>
 </html>
