@@ -315,9 +315,9 @@ body[data-nav="light"] .brand__name { color: var(--black); }
   aspect-ratio: var(--r); background: #e4e2de;
   transition: transform .7s var(--ease);
 }
-.shift { position: absolute; inset: -7% 0; display: block; will-change: transform; }
+.shift { position: absolute; inset: 0; display: block; will-change: transform; }
 .shift img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: contain; background: #e4e2de;
   transition: transform .8s var(--ease);
 }
 .frame::after {
@@ -351,9 +351,9 @@ body[data-nav="light"] .brand__name { color: var(--black); }
 /* reveal — a soft wipe, then the image settles */
 .js .piece .frame { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease), transform .7s var(--ease); }
 .js .piece.in .frame { clip-path: inset(0 0 0 0); }
-.js .piece .shift img { transform: scale(1.14); transition: transform 1.7s var(--ease); }
+.js .piece .shift img { transform: scale(1); transition: transform 1.7s var(--ease); }
 .js .piece.in .shift img { transform: scale(1); }
-.js .piece.in .piece__btn:hover .shift img { transform: scale(1.035); transition-duration: .8s; }
+.js .piece.in .piece__btn:hover .shift img { transform: scale(1); transition-duration: .8s; }
 
 .spread--drift { will-change: transform; }
 
@@ -479,7 +479,7 @@ body[data-nav="light"] .brand__name { color: var(--black); }
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
   user-select: none; -webkit-user-drag: none;
 }
-.ghost { position: fixed; z-index: 95; margin: 0; max-width: none; object-fit: cover; pointer-events: none; will-change: left, top, width, height, clip-path; }
+.ghost { position: fixed; z-index: 95; margin: 0; max-width: none; object-fit: contain; background: #e4e2de; pointer-events: none; will-change: left, top, width, height, clip-path; }
 
 .viewer__count, .viewer__close {
   position: absolute; top: 0; height: 4.5rem; display: flex; align-items: center;
@@ -985,14 +985,13 @@ body[data-nav="light"] .brand__name { color: var(--black); }
       if (this.drift) { const r = this.drift.getBoundingClientRect(); this.driftTop = r.top + window.scrollY; this.driftH = r.height; }
     },
     update(y, vh, vw) {
-      const motion = !reduced();
       for (const p of this.pieces) {
-        const c = p.top + p.h / 2 - y;
-        if (c < -p.h || c > vh + p.h) continue;
-        const t = clamp((c - vh / 2) / (vh / 2 + p.h / 2), -1, 1);
-        const ty = motion ? (-t * .065 * p.h * p.speed).toFixed(1) : '0';
-        if (ty !== p.last) { p.shift.style.transform = `translate3d(0, ${ty}px, 0)`; p.last = ty; }
+        if (p.last !== '0') {
+          p.shift.style.transform = 'none';
+          p.last = '0';
+        }
       }
+      const motion = !reduced();
       if (this.drift) {
         if (motion && desktopMQ.matches) {
           const q = clamp((y + vh - this.driftTop) / (vh + this.driftH));
