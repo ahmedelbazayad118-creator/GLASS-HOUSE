@@ -228,6 +228,29 @@ body[data-nav="light"] .brand__name { color: var(--black); }
 }
 /* the headline and its reflection */
 .hero__lead { position: relative; width: fit-content; max-width: 100%; padding-bottom: calc(var(--hero-fs) * 1.3); }
+.hero__store-name {
+  position: absolute;
+  z-index: 3;
+  top: clamp(8rem, 18vh, 13rem);
+  left: 0;
+  display: block;
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.45rem, 3.6vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: clamp(.3em, 1.2vw, .58em);
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .55);
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 1s var(--ease-io) .35s, transform 1s var(--ease) .35s;
+}
+.is-ready .hero__store-name { opacity: 1; transform: none; }
 .hero__lead::after {                       /* the mirror plane */
   content: ""; position: absolute; left: 0; right: 0; top: calc(100% - var(--hero-fs) * 1.3);
   height: 1px; background: rgba(255, 255, 255, .38);
@@ -601,6 +624,7 @@ body[data-nav="light"] .brand__name { color: var(--black); }
         <div class="hero__shade"></div>
         <div class="hero__dim" id="heroDim"></div>
         <div class="hero__logo" id="heroLogo"><img class="logo-img" src="https://ik.imagekit.io/qwyda5souj/glass%20house/photos/ChatGPT%20Image%20Sep%2019,%202026,%2011_07_55%20PM.png" alt="" decoding="async" fetchpriority="high"><p class="hero__name">Glass House</p></div>
+        <p class="hero__store-name">Glass House</p>
         <div class="hero__copy" id="heroCopy">
           <div class="hero__lead">
             <!-- HEADLINE: edit the three lines below (and the same three in the reflection underneath) -->
